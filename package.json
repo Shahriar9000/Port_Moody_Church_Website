@@ -2,9 +2,9 @@
   "name": "cmpt470project",
   "version": "1.0.0",
   "description": "This is CMPT 470 project",
-  "main": "app.js",
+  "main": "server/server.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "nodemon server/server.js.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
