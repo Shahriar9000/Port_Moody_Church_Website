@@ -1,5 +1,4 @@
 const express = require('express');
-const mysql = require('mysql');
 const router = express.Router();
 const path = require('path');
 const db = require('../db/index');
