@@ -1,8 +1,11 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const noteRouter = require('./route/notes');
+const mysql = require("mysql");
+const dotenv = require('dotenv');
+// const apiRouter = require('./route');
 
+dotenv.config({path: '../.env'});
 
 app.set('view-engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
@@ -19,9 +22,24 @@ app.get('/bg_img.jpg', (req, res) => {
   res.sendFile(path.join(__dirname + '/../public/img/bg_img.jpg'));
 });
 
+app.get('/notes', (req, res, next) => {
+  res.render('notes.ejs');
+});
 
-app.use('/notes', noteRouter);
+const db = mysql.createConnection({
+  user: 'root',
+  password: '',
+  database: 'cmpt470',
+  host: 'localhost',
+})
 
+db.connect(function(error) {
+  if (!!error) {
+    console.log(error);
+  }else {
+    console.log('Database Connected');
+  }
+})
 
 app.listen( process.env.PORT || '8080', () => {
   console.log(`Server is running on port: ${process.env.POST || '8080'}`);
