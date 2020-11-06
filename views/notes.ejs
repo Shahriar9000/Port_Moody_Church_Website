@@ -7,9 +7,10 @@
         <title>CMPT470 Project</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link rel="stylesheet" href="/index.css">
+        <script src="/notes/notes.js" charset="UTF-8"></script>
     </head>
     <body>
-        <div>
+        <div class="mx-4">
             <nav class="navbar navbar-expand-lg navbar-light bg-light bg-transparent"> 
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav nav-fill w-100">
@@ -36,25 +37,27 @@
             </nav>
         </div>
         <div class="row px-4 mx-2" style="height: 10em;">
-            <div class="card col-6 p-2" >
+            <div class="card col-5 p-2" style="background-color: rgba(255, 255, 255, 0.7);">
                 <h5 class="card-title">
                     Add Notes
                 </h5>
-                <form>
+                <form id="add_note_form" action='/notes/add_note' method="POST">
                     <div class="form-group">
                       <label for="noteTitle">Title</label>
-                      <input type="text" class="form-control" id="noteTitle" placeholder="Title of the Note">
+                      <input type="text" class="form-control" id="add_node_title" name="add_node_title" placeholder="Title of the Note">
                     </div>
                     <div class="form-group">
                       <label for="noteContent">Content</label>
-                      <textarea class="form-control" id="examplenoteContentFormControlTextarea1" rows="3"></textarea>
+                      <textarea class="form-control" id="add_node_content" name="add_node_content" rows="20"></textarea>
                     </div>
-                    <button type="button" class="btn btn-secondary">Add</button>
+                    <button type="submit" class="btn btn-secondary">&nbsp;&nbsp;Add&nbsp;&nbsp;</button>
                   </form>
             </div>
-            <div class="col-6">
-                add notes here
+            <div class="col-1"> </div>
+            <div class="card col-6 scroll" style="background-color: rgba(255, 255, 255, 0.7);" id="notes_table">
+                <h4 class="card-title pt-2">All Notes</h4>
             </div>
+            <form id="delete_note_form" action="/notes/detele_note/" method="POST"></form>
         </div>
     </body>
 </html>
