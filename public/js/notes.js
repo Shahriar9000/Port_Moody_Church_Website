@@ -28,14 +28,13 @@ function printNotes(all_notes) {
         note_title.innerHTML = title;
 
         var note_content = document.createElement("textarea");
-        note_content.classList.add("card-text", "pl-4", "mx-2");
+        note_content.classList.add("card-text", "px-2", "mr-2", "form-control");
         note_content.setAttribute("rows", "3");
-        note_content.setAttribute("cols", "100");
         note_content.setAttribute("disabled", "true");
         note_content.innerHTML = content;
 
         delete_button = document.createElement("button");
-        delete_button.classList.add("btn", "btn-secondary", "float-right");
+        delete_button.classList.add("btn", "btn-secondary", "float-right", "mt-2");
         delete_button.setAttribute("onclick", "deleteNote(" + note_id + ")");
         delete_button.id = "delete_note";
         delete_button.innerHTML = "Delete";
