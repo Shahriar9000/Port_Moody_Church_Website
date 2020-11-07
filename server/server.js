@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const noteRouter = require('./route/notes');
+const meetingRouter = require('./route/meeting');
 
 
 app.set('view-engine', 'ejs');
@@ -20,7 +21,7 @@ app.get('/bg_img.jpg', (req, res) => {
 });
 
 app.use('/notes', noteRouter);
-
+app.use('/meeting',meetingRouter)
 
 app.listen( process.env.PORT || '8080', () => {
   console.log(`Server is running on port: ${process.env.POST || '8080'}`);
