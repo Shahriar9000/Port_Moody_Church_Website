@@ -10,32 +10,9 @@
         <script src="/notes/notes.js" charset="UTF-8"></script>
     </head>
     <body>
-        <div class="mx-4">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light bg-transparent"> 
-                <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav nav-fill w-100">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/"><strong>Home</strong></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><strong>All Sermons</strong></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/notes"><strong>My Notes</strong></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><strong>All Sermons</strong></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><strong>Donation</strong></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><strong>Zoom Meeting</strong></a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
+        
+        <%- include('./partials/navbar', {active: "notes"}); %>
+
         <div class="row px-4 mx-2" style="height: 10em;">
             <div class="card col-5 p-2" style="background-color: rgba(255, 255, 255, 0.7);">
                 <h5 class="card-title">

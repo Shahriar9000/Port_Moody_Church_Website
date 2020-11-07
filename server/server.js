@@ -11,6 +11,10 @@ app.get('/', (req, res) => {
   res.render('index.ejs');
 });
 
+app.get('/index.js', (req, res) => {
+  res.sendFile(path.join(__dirname + '/../public/js/index.js'));
+});
+
 app.get('/index.css', (req, res) => {
   res.sendFile(path.join(__dirname + '/../public/css/index.css'));
 });
