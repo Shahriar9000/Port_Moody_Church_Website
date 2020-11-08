@@ -4,6 +4,8 @@ const path = require('path');
 const db = require('../db/index');
 var session = require('express-session');
 
+var userId = -1;
+
 router.use(
 	session({
 		name: 'sid',
@@ -19,7 +21,10 @@ router.use(
 
 router.get('/', (req, res, next) => {
   console.log("xxx :", req.session);
-  res.render('notes.ejs');
+  if (typeof req.session != undefined) {
+		userId = req.session.userId ? req.session.userId : -1;
+	}
+  res.render('notes.ejs', {userId});
 });
 
 router.get('/notes.js', (req, res) => {
