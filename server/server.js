@@ -6,6 +6,7 @@ const session = require('express-session');
 const db = require('./db/index');
 
 const noteRouter = require('./route/notes');
+const sermonsRouter =require('./route/sermons')
 
 var userId = -1;
 
@@ -39,6 +40,10 @@ app.get('/index.css', (req, res) => {
   res.sendFile(path.join(__dirname + '/../public/css/index.css'));
 });
 
+app.get('/sermons.css', (req, res) => {
+  res.sendFile(path.join(__dirname + '/../public/css/sermons.css'));
+});
+
 app.get('/donation.css', (req, res) => {
   res.sendFile(path.join(__dirname + '/../public/css/donation.css'));
 });
@@ -51,6 +56,7 @@ app.get('/heart.png', (req, res) => {
   res.sendFile(path.join(__dirname + '/../public/img/heart.png'));
 });
 
+
 app.get('/donation', (req, res) => {
   userId = -1	
   res.render('donation.ejs', {userId});
@@ -62,6 +68,7 @@ app.get('/zoom', (req, res) => {
 });
 
 app.use('/notes', noteRouter);
+app.use('/sermons', sermonsRouter)
 
 app.get('/login', checkUserLogin, (req, res) => {
 	res.render('login.ejs', {userId: req.session.userId, errmsg: ''});

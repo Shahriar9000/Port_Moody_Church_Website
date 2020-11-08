@@ -1,0 +1,55 @@
+body {
+    background-image: url('/bg_img.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+.scroll {
+    max-height: 750px;
+    overflow-y: auto;
+}
+
+
+#Recordings{
+    margin:100px auto;
+    height:1200px;        
+    width: 1000px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    padding: 20px; 
+  }
+
+  .content h4 {
+    text-align: center;
+  }
+
+#Recordings iframe{
+	background-color: rgba(255, 255, 255, 0.9);
+	font-weight: bold;
+	   background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    margin: 0px;
+	padding: 0px;
+	font-family: 'Chivo', sans-serif;
+	font-size: 12pt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
