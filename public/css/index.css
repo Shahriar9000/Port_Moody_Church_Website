@@ -9,3 +9,17 @@ body {
     max-height: 750px;
     overflow-y: auto;
 }
+
+
+.donate_box {
+    margin:100px auto;
+    height:500px;        
+    width: 500px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    padding: 20px; 
+  }
+
+  .donate_content h4 {
+    text-align: center
+  }

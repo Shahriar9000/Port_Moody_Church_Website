@@ -19,6 +19,14 @@ app.get('/bg_img.jpg', (req, res) => {
   res.sendFile(path.join(__dirname + '/../public/img/bg_img.jpg'));
 });
 
+app.get('/donation', (req, res) => {
+  res.render('donation.ejs');
+});
+
+app.get('/zoom', (req, res) => {
+  res.render('zoom.ejs');
+});
+
 app.use('/notes', noteRouter);
 
 
