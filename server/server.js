@@ -64,7 +64,7 @@ app.get('/zoom', (req, res) => {
 app.use('/notes', noteRouter);
 
 app.get('/login', checkUserLogin, (req, res) => {
-	res.render('login.ejs', {userId: req.session.userId, errmsg: ''});
+	res.render('login.ejs', {userId: -1, errmsg: ''});
 });
 
 app.post("/loginUser", (req, res) => {
@@ -150,7 +150,7 @@ app.post("/registerUser", (req, res) => {
 app.get('/logout', (req, res) => {
   req.session.userId = null;
   userId = -1;
-  res.render('index.ejs', {userId});
+  res.redirect('/');;
 });
 
 
