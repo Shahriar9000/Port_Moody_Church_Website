@@ -51,11 +51,13 @@ app.get('/heart.png', (req, res) => {
 });
 
 app.get('/donation', (req, res) => {
-  res.render('donation.ejs');
+  userId = -1	
+  res.render('donation.ejs', {userId});
 });
 
 app.get('/zoom', (req, res) => {
-  res.render('zoom.ejs');
+  userId = -1	
+  res.render('zoom.ejs', {userId});
 });
 
 app.use('/notes', noteRouter);
