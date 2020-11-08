@@ -95,9 +95,10 @@ app.post("/loginUser", (req, res) => {
 
 function checkUserLogin(req, res, next) {
   if(typeof req.session != undefined && req.session.userId){
-    res.redirect('/', {userId});
+	res.redirect('/');
+  }else{
+	  return next();
   }
-  return next();
 }
 
 app.get('/register', checkUserLogin, (req, res) => {
