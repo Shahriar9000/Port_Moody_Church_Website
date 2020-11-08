@@ -24,8 +24,6 @@ router.post("/loginUser", (req, res) => {
 					console.log('Email or Password is incorrect');
 					res.status(401).render('login.ejs');
 				}else{
-					res.locals.userId = results[0].id;
-					console.log(res.locals.userId);
 					res.redirect('/');
 				}
 			})

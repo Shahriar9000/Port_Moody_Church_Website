@@ -46,7 +46,7 @@ router.post("/registerUser", (req, res) => {
 			// });
 				console.log(results);
 				console.log('User registered');
-				return res.render('register.ejs');
+				return res.render('login.ejs');
 			}
 		})
 
