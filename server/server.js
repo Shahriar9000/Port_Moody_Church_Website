@@ -1,22 +1,27 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const noteRouter = require('./route/notes');
 
-/*app.use(express.static("./client/img"))*/
-app.use(express.static(path.join(__dirname, '/../client')));
+
+app.set('view-engine', 'ejs');
+app.use(express.urlencoded({ extended: false }));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname + '/../client/index.html'));
+  res.render('index.ejs');
+});
+
+app.get('/index.css', (req, res) => {
+  res.sendFile(path.join(__dirname + '/../public/css/index.css'));
 });
 
 app.get('/bg_img.jpg', (req, res) => {
-  res.sendFile(path.join(__dirname + '/../img/bg_img.jpg'));
+  res.sendFile(path.join(__dirname + '/../public/img/bg_img.jpg'));
 });
 
-app.get('/donation', (req, res) => {
-  res.sendFile(path.join(__dirname + '/../client/donation.html'));
-});
+app.use('/notes', noteRouter);
 
-app.listen(8080, () => {
-  console.log('App is running...');
+
+app.listen( process.env.PORT || '8080', () => {
+  console.log(`Server is running on port: ${process.env.POST || '8080'}`);
 });

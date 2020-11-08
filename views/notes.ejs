@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('./partials/head'); %>
+        <script src="/notes/notes.js" charset="UTF-8"></script>
+    </head>
+    <body>
+        
+        <%- include('./partials/navbar', {active: "notes"}); %>
+
+        <div class="row px-4 mx-2">
+            <div class="card col-5 p-2" style="background-color: rgba(255, 255, 255, 0.7);">
+                <h5 class="card-title">
+                    Add Notes
+                </h5>
+                <form id="add_note_form" action='/notes/add_note' method="POST">
+                    <div class="form-group">
+                      <label for="noteTitle">Title</label>
+                      <input type="text" class="form-control" id="add_node_title" name="add_node_title" placeholder="Title of the Note" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="noteContent">Content</label>
+                      <textarea class="form-control" id="add_node_content" name="add_node_content" rows="20"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-secondary">&nbsp;&nbsp;Add&nbsp;&nbsp;</button>
+                  </form>
+            </div>
+            <div class="col-1"> </div>
+            <div class="card col-6 scroll" style="background-color: rgba(255, 255, 255, 0.7);" id="notes_table">
+                <h4 class="card-title pt-2">All Notes</h4>
+            </div>
+            <form id="delete_note_form" action="/notes/detele_note/" method="POST"></form>
+        </div>
+    </body>
+</html>
