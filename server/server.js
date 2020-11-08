@@ -7,6 +7,8 @@ const db = require('./db/index');
 
 const noteRouter = require('./route/notes');
 
+var userId = -1;
+
 app.set('view-engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -26,7 +28,6 @@ app.use(
 
 
 app.get('/', (req, res) => {
-	var userId = -1;
 	if (typeof req.session != undefined) {
 		userId = req.session.userId ? req.session.userId : -1;
 	}
@@ -99,7 +100,10 @@ function checkUserLogin(req, res, next) {
 }
 
 app.get('/register', checkUserLogin, (req, res) => {
-	res.render('register.ejs');
+	if (typeof req.session != undefined) {
+		userId = req.session.userId ? req.session.userId : -1;
+	}
+	res.render('register.ejs', {userId});
 });
 
 app.post("/registerUser", (req, res) => {
