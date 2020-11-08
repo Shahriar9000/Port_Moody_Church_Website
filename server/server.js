@@ -150,7 +150,7 @@ app.post("/registerUser", (req, res) => {
 app.get('/logout', (req, res) => {
   req.session.userId = null;
   userId = -1;
-  res.render('index.ejs', {userId});
+  res.redirect('/');;
 });
 
 
