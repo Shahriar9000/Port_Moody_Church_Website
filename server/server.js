@@ -43,10 +43,6 @@ app.get('/bg_img.jpg', (req, res) => {
 
 app.use('/notes', noteRouter);
 
-// app.use('/login', require('./route/login'));
-
-// app.use('/register', require('./route/register'));
-
 app.get('/login', checkUserLogin, (req, res) => {
 	res.render('login.ejs', {userId: req.session.userId});
 });
@@ -64,7 +60,7 @@ app.post("/loginUser", (req, res) => {
 					// res.status(401).render('login.ejs', {
 					// 	message: 'Email or password is incorrect.'
 					// })
-					console.log('Email or Password is incorrect');
+					alert('Email or Password is incorrect');
 					res.status(401).render('login.ejs');
 				}else{
 					req.session.userId = results[0].id;
@@ -106,13 +102,13 @@ app.post("/registerUser", (req, res) => {
 			// return res.render('register.ejs', {
 			// 	message: 'This email is already in use.'
 			// });
-			console.log('This email in use');
+			alert('This email in use');
 			return res.render('register.ejs');
 		}else if(password != passwordConfirm){
 			// return res.render('register.ejs', {
 			// 	message: 'Password do not match.
 			// });
-			console.log('psw dont match');
+			alert('Password does not match');
 			return res.render('register.ejs');
 		}
 		let hashedPassword = await bcrypt.hash(password, 10);
@@ -126,8 +122,7 @@ app.post("/registerUser", (req, res) => {
 			// 	return res.render('register.ejs', {
 			// 	message: 'User registered.'
 			// });
-				console.log(results);
-				console.log('User registered');
+				alert('User registered');
 				return res.render('login.ejs');
 			}
 		})
