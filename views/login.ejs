@@ -1,9 +1,12 @@
 <html>
 	<head>
-		<title>Login</title>
+		<%- include('./partials/head'); %>
+
 		<script src="/login/login.js" charset="UTF-8"></script>
 	</head>
 	<body>
+		<%- include('./partials/navbar', {active: "login"}); %>
+		
 		<h1>Login</h1>
 		<form action = "/login/loginUser" method = "post">
 			<div>
