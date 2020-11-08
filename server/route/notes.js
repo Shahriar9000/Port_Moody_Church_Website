@@ -2,9 +2,23 @@
 const router = express.Router();
 const path = require('path');
 const db = require('../db/index');
+var session = require('express-session');
 
+router.use(
+	session({
+		name: 'sid',
+		saveUninitialized: false,
+		resave: false,
+		secret: `quiet, pal! it's a secret!`,
+		cookie: {
+		maxAge: 1000 * 60 * 60 * 2,
+		sameSite: true,
+		}
+	})
+)
 
 router.get('/', (req, res, next) => {
+  console.log("xxx :", req.session);
   res.render('notes.ejs');
 });
 

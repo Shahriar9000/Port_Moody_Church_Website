@@ -18,7 +18,21 @@
                     <a class="nav-link" href="#"><strong>Zoom Meeting</strong></a>
                 </li>
                 <li class="nav-item <%if(active=="login"){%>active<%}%>" >
-                    <a class="nav-link" href="/login"><strong>login</strong></a>
+                    <a class="nav-link" href="
+                        <% if(userId!="-1"){ %>
+                            /logout
+                        <% } %>
+                        <% if(userId=="-1"){ %>
+                            /login
+                        <% } %>" >
+                    <strong>
+                        <% if(userId!="-1"){ %>
+                            Logout
+                        <% } %>
+                        <% if(userId=="-1"){ %>
+                            Login
+                        <% } %>
+                    </strong></a>
                 </li>
                 
             </ul>

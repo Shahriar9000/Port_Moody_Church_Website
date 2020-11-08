@@ -1,15 +1,13 @@
 <html>
 	<head>
 		<%- include('./partials/head'); %>
-
-		<script src="/login/login.js" charset="UTF-8"></script>
 	</head>
 	<body>
 		<%- include('./partials/navbar', {active: "login"}); %>
 
 		<div class="card p-3" style="background-color: rgba(255, 255, 255, 0.7); width: 90vh; margin:auto">
 			<h1 class="card-title">Login</h1>
-			<form action = "/login/loginUser" method = "post">
+			<form action = "/loginUser" method = "post">
 				<div class="form-group">
 					<label for="email">Email</label>
 					<input class="form-control" type="email" id="email" name="email" required></input>
