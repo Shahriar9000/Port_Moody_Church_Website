@@ -15,8 +15,16 @@ app.get('/index.css', (req, res) => {
   res.sendFile(path.join(__dirname + '/../public/css/index.css'));
 });
 
+app.get('/donation.css', (req, res) => {
+  res.sendFile(path.join(__dirname + '/../public/css/donation.css'));
+});
+
 app.get('/bg_img.jpg', (req, res) => {
   res.sendFile(path.join(__dirname + '/../public/img/bg_img.jpg'));
+});
+
+app.get('/heart.png', (req, res) => {
+  res.sendFile(path.join(__dirname + '/../public/img/heart.png'));
 });
 
 app.get('/donation', (req, res) => {
