@@ -5,6 +5,7 @@ const db = require('../db/index');
 
 
 router.get('/', (req, res, next) => {
+  console.log("tt" + res.locals);
     res.render('notes.ejs');
 });
 
