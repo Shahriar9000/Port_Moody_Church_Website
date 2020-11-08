@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html lang = "en">
+
+<!-- Reference: https://getbootstrap.com/docs/4.3/getting-started/introduction/ -->
+    <head>
+        <%- include('./partials/head'); %>
+        <link rel="stylesheet" href="/sermons.css">
+        <script src="/sermons/sermons.js" charset="UTF-8"></script>
+    </head>
+    <body>
+
+        <%- include('./partials/navbar', {active: "sermons"}); %>
+
+    <div id="Recordings">
+        <div class="content">
+            <h4 class="title">Available Sermon Recordings</h4>
+        </div>
+        <div class="sub_recording">
+                <iframe src="https://drive.google.com/embeddedfolderview?id=1vtZtC7WWB0aj8qz78EFK1l19vB2bvMt4#grid" style="width:100%; height:1000px; "></iframe>
+
+        </div>
+    </div>
+
+
+
+    </body>
+    
+</html>

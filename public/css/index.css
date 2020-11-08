@@ -9,3 +9,25 @@ body {
     max-height: 750px;
     overflow-y: auto;
 }
+
+.navbar_header 
+{
+	background-color: rgba(255, 255, 255, 0.7);
+    margin: 0px;
+	padding: 0px;
+	
+	text-align: center;
+	border-bottom-style: dotted;
+	border-width: 0.2px;
+	border-color: rgb(104,104,104);
+
+}
+
+.container .navbar-brand
+{
+	font-weight: bold;
+	font-family: 'Chivo', sans-serif;
+	color: rgb(104,104,104);
+	font-size: 20pt;
+}
+

@@ -1,23 +1,41 @@
+<!-- <div id="header">
+    <div id="header-wrapper">
+            
+        <h1><a href="/">Port Moody Pacific Grace MB Church </a></h1>
+        <h2><a href="#">慕 迪 港 頌 恩 堂 </a> </h2>        
+            
+    </div>
+</div> -->
+
+<body>
+<nav class="navbar_header" id="ftco-navbar">
+<div class="container">
+    <a class="navbar-brand" href="/"> Port Moody <span>Pacific Grace MB Church</span></a>
+</div>
+</nav>
+
 <div class="mb-4">
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(255, 255, 255, 0.7);"> 
+
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav nav-fill w-100" id="navBtns">
-                <li class="nav-item <%if(active=="home"){%>active<%}%>" >
+                <li class="nav-item <%if(active=='home'){%>active<%}%>" >
                     <a class="nav-link" href="/"><strong>Home</strong></a>
                 </li>
-                <li class="nav-item <%if(active=="sermons"){%>active<%}%>" >
-                    <a class="nav-link" href="#"><strong>All Sermons</strong></a>
+                <li class="nav-item <%if(active=='sermons'){%>active<%}%>" >
+                    <a class="nav-link" href="/sermons"><strong>All Sermons</strong></a>
                 </li>
-                <li class="nav-item <%if(active=="notes"){%>active<%}%>" >
+                <li class="nav-item <%if(active=='notes'){%>active<%}%>" >
                     <a class="nav-link" href="/notes"><strong>My Notes</strong></a>
                 </li>
-                <li class="nav-item <%if(active=="donation"){%>active<%}%>" >
+                <li class="nav-item <%if(active=='donation'){%>active<%}%>" >
                     <a class="nav-link" href="/donation"><strong>Donation</strong></a>
                 </li>
-                <li class="nav-item <%if(active=="zoom"){%>active<%}%>" >
+
+                <li class="nav-item <%if(active=='zoom'){%>active<%}%>" >
                     <a class="nav-link" href=zoom><strong>Zoom Meeting</strong></a>
                 </li>
-                <li class="nav-item <%if(active=="login"){%>active<%}%>" >
+                <li class="nav-item <%if(active=='login'){%>active<%}%>" >
                     <a class="nav-link" href="
                         <% if(userId!="-1"){ %>
                             /logout
