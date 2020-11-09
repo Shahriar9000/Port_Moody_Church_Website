@@ -20,11 +20,15 @@ router.use(
 )
 
 router.get('/', (req, res, next) => {
-  console.log("xxx :", req.session);
   if (typeof req.session != undefined) {
-		userId = req.session.userId ? req.session.userId : -1;
-	}
-  res.render('notes.ejs', {userId});
+    userId = req.session.userId ? req.session.userId : -1;
+  } 
+  if (userId != -1) {
+    res.render('notes.ejs', {userId});
+  }
+  else {
+    res.render('login.ejs', {userId: -1, errmsg: 'Login is required.'});
+  }
 });
 
 router.get('/notes.js', (req, res) => {
@@ -32,7 +36,7 @@ router.get('/notes.js', (req, res) => {
 });
 
 router.get('/get_notes', (req, res) => {
-  const queryString = "SELECT * FROM notes WHERE record_status = 'Active'"
+  const queryString = "SELECT * FROM notes WHERE record_status = 'Active' AND user_id = " + userId;
   db.query(queryString, (err, rows, fields) => {
     if (err) {
       console.log("Failed to query at /get_note: " + err)
@@ -43,13 +47,12 @@ router.get('/get_notes', (req, res) => {
 })
 
 router.post('/add_note', (req, res) => {
-  const user_id = 1;
   const note_title = req.body.add_node_title;
   const note_content = req.body.add_node_content;
 
   if(note_title || note_content) {
       const queryString = "INSERT INTO notes (user_id, title, content) VALUES (?, ?, ?)";
-      db.query(queryString, [user_id, note_title, note_content], (err, rows, fields) => {
+      db.query(queryString, [userId, note_title, note_content], (err, rows, fields) => {
       if (err) {
           alert("Failed to insert at /add_note/: "  + " " + err);
       }else {
