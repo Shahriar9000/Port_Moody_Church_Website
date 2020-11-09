@@ -1,0 +1,3 @@
+runtime: nodejs10
+beta_settings:
+    cloud_sql_instances: 'ngawangkyirong301312227:us-central1:cmpt470'

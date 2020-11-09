@@ -17,8 +17,31 @@ const db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   database: process.env.DB_DATABASE,
-  password: process.env.DB_PASS
+  password: process.env.DB_PASS,
+  socketPath: '/cloudsql/ngawangkyirong301312227:us-central1:cmpt470'
 });
+console.log(process.env.DB_HOST);
+
+
+
+/*
+const createUnixSocketPool = async config => {
+  const dbSocketPath = process.env.DB_SOCKET_PATH || '/cloudsql';
+
+  // Establish a connection to the database
+  return await mysql.createPool({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER, // e.g. 'my-db-user'
+    password: process.env.DB_PASS, // e.g. 'my-db-password'
+    database: process.env.DB_DATABSE, // e.g. 'my-database'
+    // If connecting via unix domain socket, specify the path
+    socketPath: `${dbSocketPath}/${process.env.CLOUD_SQL_CONNECTION_NAME}`,
+    // Specify additional properties here.
+    port: 3306;
+  });
+};
+*/
+
 
 db.connect(function(error) {
   if (!!error) {
