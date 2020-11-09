@@ -58,12 +58,10 @@ app.get('/heart.png', (req, res) => {
 
 
 app.get('/donation', (req, res) => {
-  userId = -1	
   res.render('donation.ejs', {userId});
 });
 
 app.get('/zoom', (req, res) => {
-  userId = -1	
   res.render('zoom.ejs', {userId});
 });
 
@@ -89,8 +87,8 @@ app.post("/loginUser", (req, res) => {
 					// res.status(401).render('login.ejs');
 				}else{
 					req.session.userId = results[0].id;
-					// console.log(req.session);
-					res.render('index.ejs', {userId: results[0].id});
+					userId = results[0].id;
+					res.render('index.ejs', {userId});
 				}
 			})
 
