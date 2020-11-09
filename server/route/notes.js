@@ -54,7 +54,7 @@ router.post('/add_note', (req, res) => {
       const queryString = "INSERT INTO notes (user_id, title, content) VALUES (?, ?, ?)";
       db.query(queryString, [userId, note_title, note_content], (err, rows, fields) => {
       if (err) {
-          alert("Failed to insert at /add_note/: "  + " " + err);
+          console.log("Failed to insert at /add_note/: "  + " " + err);
       }else {
           console.log("@/add_note note " + note_title + " added.");
       }
@@ -68,7 +68,7 @@ router.post('/detele_note/:id', (req, res) => {
   const queryString = "UPDATE notes SET record_status = 'Deleted' WHERE note_id = ?";
   db.query(queryString, [note_id], (err, rows, fields) => {
     if (err) {
-      alert("Failed to query at /detele_note/: " + note_id + " " + err);
+      console.log("Failed to query at /detele_note/: " + note_id + " " + err);
     } else {
         console.log("@/detele_note/ Deleting note with id " + note_id);
     }
