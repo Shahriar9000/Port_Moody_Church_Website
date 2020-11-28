@@ -65,7 +65,7 @@ router.post('/add_note', (req, res) => {
 
 router.post('/detele_note/:id', (req, res) => {
   const note_id = req.params.id
-  const queryString = "UPDATE notes SET record_status = 'Deleted' WHERE note_id = ?";
+  const queryString = "DELETE FROM notes WHERE note_id = ?";
   db.query(queryString, [note_id], (err, rows, fields) => {
     if (err) {
       console.log("Failed to query at /detele_note/: " + note_id + " " + err);
