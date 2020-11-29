@@ -35,8 +35,24 @@ router.get('/notes.js', (req, res) => {
   res.sendFile(path.join(__dirname + '../../../public/js/notes.js'));
 });
 
+router.get('/notes.css', (req, res) => {
+  res.sendFile(path.join(__dirname + '../../../public/css/notes.css'));
+});
+
 router.get('/get_notes', (req, res) => {
   const queryString = "SELECT * FROM notes WHERE record_status = 'Active' AND user_id = " + userId;
+  db.query(queryString, (err, rows, fields) => {
+    if (err) {
+      console.log("Failed to query at /get_note: " + err)
+    }
+    console.log("Getting data from database at /get_notes")
+    res.json(rows)
+  })
+})
+
+router.get('/get_notes/:id', (req, res) => {
+  const note_id = req.params.id
+  const queryString = "SELECT * FROM notes WHERE record_status = 'Active' AND user_id = " + userId + " AND note_id = " + note_id;
   db.query(queryString, (err, rows, fields) => {
     if (err) {
       console.log("Failed to query at /get_note: " + err)
@@ -61,6 +77,22 @@ router.post('/add_note', (req, res) => {
       res.redirect('/notes');
       })
   }
+})
+
+router.post('/update_note/:id', (req, res) => {
+  const note_id = req.params.id
+  const note_title = req.body.update_note_title;
+  const note_content = req.body.update_note_content;
+
+  const queryString = "UPDATE notes SET title = \'"+ note_title +"\', content = \'"+ note_content +"\' WHERE note_id = "+ note_id +" AND user_id = " + userId;
+  db.query(queryString, (err, rows, fields) => {
+  if (err) {
+      console.log("Failed to insert at /update_note/: "  + " " + err);
+  }else {
+      console.log("@/update_note note " + note_id + " updated.");
+  }
+  res.redirect('/notes');
+  })
 })
 
 router.post('/detele_note/:id', (req, res) => {
