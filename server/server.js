@@ -70,6 +70,10 @@ app.get('/zoom', (req, res) => {
 app.use('/notes', noteRouter);
 app.use('/sermons', sermonsRouter)
 
+app.use('/admin', (req, res) => {
+	res.render('admin.ejs', {userId, role});
+})
+
 app.get('/login', checkUserLogin, (req, res) => {
 	res.render('login.ejs', {userId: -1, role: 'regular', errmsg: ''});
 });
