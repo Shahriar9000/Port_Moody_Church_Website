@@ -9,6 +9,7 @@ const noteRouter = require('./route/notes');
 const sermonsRouter =require('./route/sermons')
 
 var userId = -1;
+var role = 'regular';
 
 app.set('view-engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
@@ -32,8 +33,9 @@ app.use(
 app.get('/', (req, res) => {
 	if (typeof req.session != undefined) {
 		userId = req.session.userId ? req.session.userId : -1;
+		role = req.session.role? req.session.role : 'regular';
 	}
-  res.render('index.ejs', {userId});
+  res.render('index.ejs', {userId, role});
 });
 
 app.get('/index.css', (req, res) => {
@@ -58,18 +60,22 @@ app.get('/heart.png', (req, res) => {
 
 
 app.get('/donation', (req, res) => {
-  res.render('donation.ejs', {userId});
+  res.render('donation.ejs', {userId, role});
 });
 
 app.get('/zoom', (req, res) => {
-  res.render('zoom.ejs', {userId});
+  res.render('zoom.ejs', {userId, role});
 });
 
 app.use('/notes', noteRouter);
 app.use('/sermons', sermonsRouter)
 
+app.use('/admin', (req, res) => {
+	res.render('admin.ejs', {userId, role});
+})
+
 app.get('/login', checkUserLogin, (req, res) => {
-	res.render('login.ejs', {userId: -1, errmsg: ''});
+	res.render('login.ejs', {userId: -1, role: 'regular', errmsg: ''});
 });
 
 app.post("/loginUser", (req, res) => {
@@ -82,13 +88,13 @@ app.post("/loginUser", (req, res) => {
 				 //results is true when its empty
 
 				if(Object.keys(results).length == 0 || !(await bcrypt.compare(password, results[0].password))){
-          res.status(401).render('login.ejs', {userId: -1, errmsg: 'Email or password is incorrect.'})
-					// alert('Email or Password is incorrect');
-					// res.status(401).render('login.ejs');
+            		res.status(401).render('login.ejs', {userId: -1, errmsg: 'Email or password is incorrect.'})
 				}else{
 					req.session.userId = results[0].id;
+					req.session.role = results[0].role;
 					userId = results[0].id;
-					res.render('index.ejs', {userId});
+					role = results[0].role;
+					res.render('index.ejs', {userId, role});
 				}
 			})
 
@@ -109,8 +115,9 @@ function checkUserLogin(req, res, next) {
 app.get('/register', checkUserLogin, (req, res) => {
 	if (typeof req.session != undefined) {
 		userId = req.session.userId ? req.session.userId : -1;
+		role = req.session.role ? req.session.role : 'regular';
 	}
-	res.render('register.ejs', {userId, errmsg: ''});
+	res.render('register.ejs', {userId, role, errmsg: ''});
 });
 
 app.post("/registerUser", (req, res) => {
@@ -119,6 +126,7 @@ app.post("/registerUser", (req, res) => {
 	const email = req.body.email;
 	const password = req.body.password;
 	const passwordConfirm = req.body.passwordConfirm;
+	const role = 'regular';
 
 	db.query('SELECT email FROM users WHERE email = ?', [email], async(error, results) => {
 
@@ -126,26 +134,19 @@ app.post("/registerUser", (req, res) => {
 			console.log(error);
 		}
 		if(results.length > 0){
-			return res.render('register.ejs', {userId, errmsg: 'This email is already in use.'});
-			// alert('This email in use');
-			// return res.render('register.ejs');
+			return res.render('register.ejs', {userId, role, errmsg: 'This email is already in use.'});
 		}else if(password != passwordConfirm){
-			return res.render('register.ejs', {userId, errmsg: 'Password do not match'});
-			// alert('Password does not match');
-			// return res.render('register.ejs');
+			return res.render('register.ejs', {userId, role, errmsg: 'Password do not match'});
 		}
 		let hashedPassword = await bcrypt.hash(password, 10);
 		console.log(hashedPassword);
 		
-		db.query('INSERT INTO users SET ?', {name: name, email: email, password: hashedPassword}, (error, results) => {
+		db.query('INSERT INTO users SET ?', {name: name, email: email, password: hashedPassword, role: role}, (error, results) => {
 			if(error){
 				console.log(error);
 			}
 			else{
-			// 	return res.render('register.ejs', {
-			// 	message: 'User registered.'
-      // });
-				return res.render('login.ejs', {userId,errmsg: ''});
+				return res.render('login.ejs', {userId, role, errmsg: ''});
 			}
 		})
 
@@ -154,7 +155,9 @@ app.post("/registerUser", (req, res) => {
 
 app.get('/logout', (req, res) => {
   req.session.userId = null;
+  req.session.role = 'regular';
   userId = -1;
+  role = 'regular';
   res.redirect('/');;
 });
 

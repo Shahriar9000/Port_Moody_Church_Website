@@ -5,6 +5,7 @@ const db = require('../db/index');
 var session = require('express-session');
 
 var userId = -1;
+var role = 'regular';
 
 router.use(
 	session({
@@ -23,8 +24,9 @@ router.get('/', (req, res, next) => {
   console.log("xxx :", req.session);
   if (typeof req.session != undefined) {
 		userId = req.session.userId ? req.session.userId : -1;
+		role = req.session.role ? req.session.role : 'regular';
 	}
-  res.render('sermons.ejs', {userId});
+  res.render('sermons.ejs', {userId, role});
 });
 
 router.get('/sermons.js', (req, res) => {
