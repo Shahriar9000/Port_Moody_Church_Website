@@ -5,6 +5,7 @@ const db = require('../db/index');
 var session = require('express-session');
 
 var userId = -1;
+var role = 'regular';
 
 router.use(
 	session({
@@ -22,12 +23,13 @@ router.use(
 router.get('/', (req, res, next) => {
   if (typeof req.session != undefined) {
     userId = req.session.userId ? req.session.userId : -1;
+    role = req.session.role ? req.session.role : 'regular';
   } 
   if (userId != -1) {
-    res.render('notes.ejs', {userId});
+    res.render('notes.ejs', {userId, role});
   }
   else {
-    res.render('login.ejs', {userId: -1, errmsg: 'Login is required.'});
+    res.render('login.ejs', {userId: -1, role: 'regular', errmsg: 'Login is required.'});
   }
 });
 
