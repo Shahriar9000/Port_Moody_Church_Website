@@ -2,6 +2,7 @@
 <html>
     <head>
         <%- include('./partials/head'); %>
+        <link rel="stylesheet" type="text/css" href="/notes/notes.css">
         <script src="/notes/notes.js" charset="UTF-8"></script>
     </head>
     <body>
@@ -29,7 +30,24 @@
             <div class="card col-6 scroll" style="background-color: rgba(255, 255, 255, 0.7);" id="notes_table">
                 <h4 class="card-title pt-2">All My Notes</h4>
             </div>
-            <form id="delete_note_form" action="/notes/detele_note/" method="POST"></form>
+
+            <form id="delete_note_form" action="" method="POST"></form>
+
+            <div class="card form-popup" id="myForm">
+                <form id="update_note_form" action="" class="form-container" method="POST">
+                    <h1>Upload Note</h1>
+                    <div class="form-group">
+                        <label for="update_note_title"><b>Title</b></label>
+                        <input class="form-control" type="text" id="update_note_title" name="update_note_title" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="update_note_content"><b>Content</b></label>
+                        <textarea class="form-control" type="text" id="update_note_content" name="update_note_content" rows="15" required></textarea>
+                    </div>
+                    <button id="close_update_note_btn" type="button" class="btn btn-secondary float-right m-2">Close</button>
+                    <button id="update_note_btn" type="submit" class="btn btn-secondary float-right m-2">Update</button>
+                </form>
+            </div>
         </div>
     </body>
 </html>
