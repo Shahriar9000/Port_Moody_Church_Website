@@ -119,6 +119,7 @@ app.post("/registerUser", (req, res) => {
 	const email = req.body.email;
 	const password = req.body.password;
 	const passwordConfirm = req.body.passwordConfirm;
+	const role = 'regular';
 
 	db.query('SELECT email FROM users WHERE email = ?', [email], async(error, results) => {
 
@@ -137,7 +138,7 @@ app.post("/registerUser", (req, res) => {
 		let hashedPassword = await bcrypt.hash(password, 10);
 		console.log(hashedPassword);
 		
-		db.query('INSERT INTO users SET ?', {name: name, email: email, password: hashedPassword}, (error, results) => {
+		db.query('INSERT INTO users SET ?', {name: name, email: email, password: hashedPassword, role: role}, (error, results) => {
 			if(error){
 				console.log(error);
 			}
@@ -159,6 +160,6 @@ app.get('/logout', (req, res) => {
 });
 
 
-app.listen( process.env.PORT || '8080', () => {
-  console.log(`Server is running on port: ${process.env.POST || '8080'}`);
+app.listen( process.env.PORT || '8000', () => {
+  console.log(`Server is running on port: ${process.env.POST || '8000'}`);
 });
