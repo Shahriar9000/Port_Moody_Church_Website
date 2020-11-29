@@ -83,8 +83,6 @@ app.post("/loginUser", (req, res) => {
 
 				if(Object.keys(results).length == 0 || !(await bcrypt.compare(password, results[0].password))){
           res.status(401).render('login.ejs', {userId: -1, errmsg: 'Email or password is incorrect.'})
-					// alert('Email or Password is incorrect');
-					// res.status(401).render('login.ejs');
 				}else{
 					req.session.userId = results[0].id;
 					userId = results[0].id;
@@ -128,12 +126,8 @@ app.post("/registerUser", (req, res) => {
 		}
 		if(results.length > 0){
 			return res.render('register.ejs', {userId, errmsg: 'This email is already in use.'});
-			// alert('This email in use');
-			// return res.render('register.ejs');
 		}else if(password != passwordConfirm){
 			return res.render('register.ejs', {userId, errmsg: 'Password do not match'});
-			// alert('Password does not match');
-			// return res.render('register.ejs');
 		}
 		let hashedPassword = await bcrypt.hash(password, 10);
 		console.log(hashedPassword);
@@ -143,9 +137,6 @@ app.post("/registerUser", (req, res) => {
 				console.log(error);
 			}
 			else{
-			// 	return res.render('register.ejs', {
-			// 	message: 'User registered.'
-      // });
 				return res.render('login.ejs', {userId,errmsg: ''});
 			}
 		})
