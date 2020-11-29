@@ -82,11 +82,16 @@ app.post("/loginUser", (req, res) => {
 				 //results is true when its empty
 
 				if(Object.keys(results).length == 0 || !(await bcrypt.compare(password, results[0].password))){
-          res.status(401).render('login.ejs', {userId: -1, errmsg: 'Email or password is incorrect.'})
+            		res.status(401).render('login.ejs', {userId: -1, errmsg: 'Email or password is incorrect.'})
 				}else{
 					req.session.userId = results[0].id;
+					req.session.role = results[0].role;
 					userId = results[0].id;
-					res.render('index.ejs', {userId});
+					if(req.session.role = 'admin'){
+						res.render('admin.ejs', {userId});
+					}else if(req.session.role = 'regular'){
+						res.render('index.ejs', {userId});
+					}
 				}
 			})
 
