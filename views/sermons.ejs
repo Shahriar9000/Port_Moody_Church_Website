@@ -32,8 +32,20 @@
 
         </div>
 
-        <div id="sermonsNotes">
-            hello world
+        <div id="sermonsNotes" style="display: none;">
+            <% if(userId != "-1" && role == "admin"){ %>
+                <form action="/sermons/uploadSermon" method="POST" enctype="multipart/form-data">
+                    <div class="input-group mt-2">
+                        <div class="custom-file">
+                            <label class="custom-file-label" for="newSermon">Upload a New Sermon File</label>
+                            <input type="file" class="custom-file-input" name="newSermon" id="newSermon" accept="audio/*,video/*" required>
+                        </div>
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary" type="submit">Uplaod</button>
+                        </div>
+                    </div>
+                </form> 
+            <% } %>
         </div>
     </div>
 
