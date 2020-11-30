@@ -2,13 +2,28 @@
 <html> 
     <head>
         <%- include('./partials/head'); %>
+        <script src="/admin/admin.js" charset="UTF-8"></script>
     </head>
 
     <body>
         
         <%- include('./partials/navbar', {active: "Admin"}); %>
 
-        Hello!
+        <div class="">
+            <table width="600" border="1" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th></th>
+                    </tr> 
+                </thead>
+                <tbody id="tbMain"></tbody>
+            </table>
+        </div>
+            
+            
+
 
     </body>
 
