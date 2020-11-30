@@ -5,10 +5,11 @@ const dotenv = require('dotenv');
 dotenv.config({path: path.join(__dirname + '/../../.env')});
 
 const db = mysql.createConnection({
-  user: process.env.DATABASE_USER,
-  password: process.env.DATABASE_PASSWORD,
+  user: 'root',
+  password: 'root',
   database: 'cmpt470',
   host: 'localhost',
+  port: '8889',
 })
 
 db.connect(function(error) {
