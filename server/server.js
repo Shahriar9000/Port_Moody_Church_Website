@@ -49,6 +49,9 @@ app.get('/sermons.css', (req, res) => {
 app.get('/donation.css', (req, res) => {
   res.sendFile(path.join(__dirname + '/../public/css/donation.css'));
 });
+app.get('/contact.css', (req, res) => {
+	res.sendFile(path.join(__dirname + '/../public/css/contact.css'));
+  });
 
 app.get('/bg_img.jpg', (req, res) => {
   res.sendFile(path.join(__dirname + '/../public/img/bg_img.jpg'));
@@ -62,6 +65,10 @@ app.get('/heart.png', (req, res) => {
 app.get('/donation', (req, res) => {
   res.render('donation.ejs', {userId, role});
 });
+
+app.get('/contact', (req, res) => {
+	res.render('contact.ejs', {userId, role});
+  });
 
 app.get('/zoom', (req, res) => {
   res.render('zoom.ejs', {userId, role});
