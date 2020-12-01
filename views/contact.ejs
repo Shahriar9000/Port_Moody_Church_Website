@@ -1,0 +1,59 @@
+<!DOCTYPE html> 
+<html> 
+    <head>
+        <%- include('./partials/head'); %>
+        <meta http-equiv="Content-Type"content="text/html; charset=utf-8"/>
+		<meta name="viewport"content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+		<title>CSS Responsive Contact Form With Google Map</title>
+		<link rel="stylesheet" href="/contact.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <%- include('./partials/navbar', {active: "contact"}); %>
+		<div class="contact-wrap">
+			<div class="contact-in">
+				<h1>Contact Info</h1>
+				<h2><i class="fa fa-phone" aria-hidden="true"></i> Phone</h2>
+                <p>	Church #: (604) 939-8936<br /> Office #: (604) 939-8281<br /> Office
+                    Fax#: (604) 939-8201<br /> <br></p>
+
+				<h2><i class="fa fa-envelope" aria-hidden="true"></i> Email</h2>
+				<p>General Information: <a href="mailto:info@pmpgmbc.ca">info@pmpgmbc.ca</a><br />
+                    Web-related Enquiry: <a href="mailto:webmaster@pmpgmbc.ca">webmaster@pmpgmbc.ca</a><br></p>
+				<h2><i class="fa fa-map-marker" aria-hidden="true"></i> Address</h2>
+				<p>2622 St. Johns Street
+                    Port Moody, BC
+                    V3H 2B6
+                    Canada</p>
+				<ul>
+                    <li><a href="https://www.facebook.com/pmpgmbc"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    Contact us using facebook
+	
+				</ul>
+			</div>
+			
+			<!-- <div class="contact-in">
+				<h1>Send a Message</h1>
+				<form>
+					<input type="text" placeholder="Full Name" class="contact-in-input">
+					<input type="text" placeholder="Email" class="contact-in-input">
+					<input type="text" placeholder="Subject" class="contact-in-input">
+					<textarea placeholder="Message" class="contact-in-textarea"></textarea>
+					<input type="submit" value="SUBMIT" class="contact-in-btn">
+				</form>
+			</div> -->
+			<div class="contact-in">
+				<iframe src="https://maps.google.ca/maps?f=q&amp;hl=en&amp;geocode=&amp;q=2622+St.+Johns+Street,+Port+Moody,+BC,+canada&amp;sll=49.891235,-97.15369&amp;sspn=27.538611,61.171875&amp;ie=UTF8&amp;ll=49.283596,-122.849979&amp;spn=0.00679,0.014935&amp;z=14&amp;iwloc=addr&amp;output=embed&amp;s=AARTsJpQ8Hsj0TKg5BfzCXTUwYXQLQgULA"width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+			</div>
+		</div>
+	</body>
+
+
+
+
+
+
+
+
+</html>
