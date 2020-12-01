@@ -35,9 +35,11 @@
                 <li class="nav-item <%if(active=='zoom'){%>active<%}%>" >
                     <a class="nav-link" href=zoom><strong>Zoom Meeting</strong></a>
                 </li>
+
                 <li class="nav-item <%if(active=='contact'){%>active<%}%>" >
-                    <a class="nav-link" href=contact><strong>Contact us</strong></a>
+                    <a class="nav-link" href=/contact><strong>Contact us</strong></a>
                 </li>
+                
                 <% if(userId != "-1" && role == "admin"){ %>
                     <li class="nav-item <%if(active=='admin'){%>active<%}%>" >
                         <a class="nav-link" href=admin><strong>Admin</strong></a>
