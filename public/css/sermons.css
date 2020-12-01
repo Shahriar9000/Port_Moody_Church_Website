@@ -12,9 +12,9 @@ body {
 
 
 #Recordings{
-    margin:100px auto;
+    margin:50px auto;
     height:1200px;        
-    width: 1000px;
+    width: 90%;
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 10px;
     padding: 20px; 

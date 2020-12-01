@@ -47,7 +47,6 @@ router.get('/get_notes', (req, res) => {
     if (err) {
       console.log("Failed to query at /get_note: " + err)
     }
-    console.log("Getting data from database at /get_notes")
     res.json(rows)
   })
 })
@@ -59,7 +58,6 @@ router.get('/get_notes/:id', (req, res) => {
     if (err) {
       console.log("Failed to query at /get_note: " + err)
     }
-    console.log("Getting data from database at /get_notes")
     res.json(rows)
   })
 })
