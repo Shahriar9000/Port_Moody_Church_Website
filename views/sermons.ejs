@@ -47,11 +47,24 @@
                 </form> 
             <% } %>
             
-            <div class="card scroll px-2" style="background-color: rgba(255, 255, 255, 0.7);" id="sermons_table">
-                
-            </div>
+            <div class="card scroll px-2" style="background-color: rgba(255, 255, 255, 0.7);" id="sermons_table"> </div>
 
+            <div class="card form-popup" id="add_sermon_note_container">
+                <form id="add_sermon_note_form" action="" class="form-container" method="POST">
+                    <h5 id="add_sermon_note_header"></h5>
+                    <div class="form-group">
+                        <label for="add_sermon_note_title"><b>Title</b></label>
+                        <input class="form-control" type="text" id="add_sermon_note_title" name="add_sermon_note_title" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="add_sermon_note_content"><b>Content</b></label>
+                        <textarea class="form-control" type="text" id="add_sermon_note_content" name="add_sermon_note_content" rows="10"></textarea>
+                    </div>
+                    <button id="close_add_sermon_note_btn" type="button" class="btn btn-secondary float-right m-2">Close</button>
+                    <button id="save_add_sermon_note_btn" type="submit" class="btn btn-secondary float-right m-2">Save</button>
+                </form>
             </div>
+            
         </div>
     </div>
 

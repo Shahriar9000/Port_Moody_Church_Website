@@ -73,6 +73,22 @@ router.get('/get_sermons', (req, res) => {
 	})
 })
 
-
+router.post('/add_note/:sermon_id', (req, res) => {
+	const sermon_id = req.params.sermon_id
+	const note_title = req.body.add_sermon_note_title;
+	const note_content = req.body.add_sermon_note_content;
+  
+	if(note_title || note_content) {
+		const queryString = "INSERT INTO notes (user_id, title, content) VALUES (?, ?, ?)";
+		db.query(queryString, [userId, note_title, note_content], (err, rows, fields) => {
+		if (err) {
+			console.log("Failed to insert at /add_note/: "  + " " + err);
+		}else {
+			console.log("@/add_note note " + note_title + " added.");
+		}
+		res.redirect('/notes');
+		})
+	}
+  })
 
 module.exports = router;

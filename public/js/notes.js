@@ -67,7 +67,7 @@ function openUpdateForm(note_id) {
 
         document.getElementById("update_note_title").value = note[0].title;
         document.getElementById("update_note_content").value = note[0].content;
-        document.getElementById("myForm").style.display = "block";
+        document.getElementById("update_note_container").style.display = "block";
 
         document.getElementById("update_note_btn").setAttribute("onclick", "updateNote(" + note[0].note_id + ")");
         document.getElementById("close_update_note_btn").setAttribute("onclick", "closeUpdateForm()");
@@ -76,7 +76,7 @@ function openUpdateForm(note_id) {
 }
 
 function closeUpdateForm() {
-    document.getElementById("myForm").style.display = "none";
+    document.getElementById("update_note_container").style.display = "none";
 }
 
 function updateNote(note_id) {
