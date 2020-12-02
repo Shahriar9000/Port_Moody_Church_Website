@@ -5,6 +5,7 @@ function showAllUsers() {
     var request = new XMLHttpRequest();
     var requestURL = '/admin/getTable'
     request.open('GET', requestURL);
+    request.responseType = 'json';
     request.send();
     request.onload = function() {
         var users = request.response;
@@ -30,18 +31,17 @@ function printUserTable(users) {
         var user_cell3 = user_row.insertCell(2);
         
         // user_table.classList.add("");
-        // user_table.id = "user_table_" + i;
         user_cell1.innerHTML = name;
         user_cell2.innerHTML = email;
 
-        var delete_button = document.createElement("button");
+        var delete_button = document.createElement("form");
+        delete_button.setAttribute("method", "post");
         delete_button.classList.add("btn", "btn-secondary", "mt-2");
-        delete_button.setAttribute("onclick", "deleteUser(" + user_id +")");
         delete_button.id = "delete_user_" + user_id;
+        delete_button.setAttribute("onclick", "deleteUser(" + user_id + ")");
         delete_button.innerHTML = "Delete";
 
         user_cell3.appendChild(delete_button);
-
         table.appendChild(user_table);
 
     }

@@ -33,8 +33,7 @@ router.get('/admin.js', (req, res) => {
 });
 
 router.get('/getTable', (req, res) => {
-	const user_id = req.params.id;
-	const query = "SELECT * FROM users";
+	const query = "SELECT `id`, `name`, `email` FROM `users` WHERE role = 'regular'";
 	db.query(query, (err, rows, fields) => {
 		if(err) {
 			console.log("Failed to get user table: " + err);
@@ -46,6 +45,7 @@ router.get('/getTable', (req, res) => {
 
 router.post('/delete_user/:id', (req, res) => {
 	const user_id = req.params.id;
+	console.log(user_id);
 	const query = "DELETE FROM users WHERE id = ?";
 	db.query(query, [user_id], (err, rows, fields) => {
 		if(err) {
