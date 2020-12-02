@@ -6,7 +6,8 @@ const session = require('express-session');
 const db = require('./db/index');
 
 const noteRouter = require('./route/notes');
-const sermonsRouter =require('./route/sermons')
+const sermonsRouter =require('./route/sermons');
+const adminRouter =require('./route/admin')
 
 var userId = -1;
 var role = 'regular';
@@ -75,11 +76,9 @@ app.get('/zoom', (req, res) => {
 });
 
 app.use('/notes', noteRouter);
-app.use('/sermons', sermonsRouter)
+app.use('/sermons', sermonsRouter);
 
-app.use('/admin', (req, res) => {
-	res.render('admin.ejs', {userId, role});
-})
+app.use('/admin', adminRouter)
 
 app.get('/login', checkUserLogin, (req, res) => {
 	res.render('login.ejs', {userId: -1, role: 'regular', errmsg: ''});
