@@ -18,6 +18,7 @@ body {
 	margin: auto;
 	display: flex;
 	flex-wrap: wrap;
+	padding: 15px;
 }
 
 .contact-in {
@@ -42,7 +43,7 @@ body {
 
 .contact-in h1 {
 	font-size: 24px;
-	color: #fff;
+	color: rgb(48, 47, 47);
 	text-transform: uppercase;
 	font-weight: 500;
 	margin-bottom: 20px;
@@ -112,14 +113,15 @@ body {
 	outline: none;
 	padding-left: 5px;
 	background: transparent;
-	color: #fff;
+	/* color: #fff; */
+	color:rgb(48, 47, 47);
 	font-size: 12px;
 	font-weight: 300;
 	font-family: 'Poppins', sans-serif;
 }
 
 .contact-in-input::placeholder {
-	color: #fff;
+	color:rgb(48, 47, 47);
 }
 
 .contact-in-textarea {
@@ -131,14 +133,14 @@ body {
 	padding-top: 5px;
 	padding-left: 5px;
 	background: transparent;
-	color: #fff;
+	color:rgb(48, 47, 47);
 	font-size: 12px;
 	font-weight: 300;
 	font-family: 'Poppins', sans-serif;
 }
 
 .contact-in-textarea::placeholder {
-	color: #fff;
+	color:rgb(48, 47, 47);
 }
 
 .contact-in-btn {
@@ -147,8 +149,8 @@ body {
 	border: 1px solid #fff;
 	outline: none;
 	background: transparent;
-	color: #fff;
-	font-size: 12px;
+	color:rgb(48, 47, 47);;
+	font-size: 20px;
 	font-weight: 300;
 	font-family: 'Poppins', sans-serif;
 	cursor: pointer;
