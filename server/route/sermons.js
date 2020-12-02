@@ -81,12 +81,20 @@ router.post('/add_note/:sermon_id', (req, res) => {
 	if(note_title || note_content) {
 		const queryString = "INSERT INTO notes (user_id, title, content) VALUES (?, ?, ?)";
 		db.query(queryString, [userId, note_title, note_content], (err, rows, fields) => {
-		if (err) {
-			console.log("Failed to insert at /add_note/: "  + " " + err);
-		}else {
-			console.log("@/add_note note " + note_title + " added.");
-		}
-		res.redirect('/notes');
+			if (err) {
+				console.log("Failed to insert at /add_note/: "  + " " + err);
+			}else {
+				const note_id = rows.insertId;
+				const queryString = "INSERT INTO sermon_has_notes (sermon_id, note_id) VALUES (?, ?)";
+				db.query(queryString, [sermon_id, note_id], (err, rows, fields) => {
+					if (err) {
+						console.log("Failed to insert at /sermon_has_notes/: "  + " " + err);
+					}else {
+						console.log("@/add_note sermon " + sermon_id + " has note " + note_id + " added." );
+					}
+					res.redirect('/sermons');
+				})
+			}
 		})
 	}
   })
