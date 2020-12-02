@@ -153,6 +153,7 @@ body {
 	font-weight: 300;
 	font-family: 'Poppins', sans-serif;
 	cursor: pointer;
+	border-radius: 6px;
 }
 
 .contact-in-btn:hover{
