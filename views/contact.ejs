@@ -5,6 +5,8 @@
         <meta http-equiv="Content-Type"content="text/html; charset=utf-8"/>
 		<meta name="viewport"content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 		<title>CSS Responsive Contact Form With Google Map</title>
+		<script src="/contact/contact.js" charset="UTF-8"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.3/socket.io.js" integrity="sha512-Jr0UIR/Q8MUX+93zjDOhuDUKLqJZObtwpkLJQcR9qMaLgL0thet39IORuavUaZFkZ8a4ktrUsKPM9mf5LWMduA==" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="/contact.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
     </head>
@@ -42,11 +44,11 @@
 			<div class="contact-in">
 				<h1>Send a Message</h1>
 				<form>
-					<input type="text" placeholder="Full Name" class="contact-in-input">
-					<input type="text" placeholder="Email" class="contact-in-input">
-					<input type="text" placeholder="Subject" class="contact-in-input">
-					<textarea placeholder="Message" class="contact-in-textarea"></textarea>
-					<input type="submit" value="Submit" class="contact-in-btn">
+					<input type="text" id="name" placeholder="Full Name" class="contact-in-input">
+					<input type="text" id="email" placeholder="Email" class="contact-in-input">
+					<input type="text" id="subject" placeholder="Subject" class="contact-in-input">
+					<textarea id="message" placeholder="Message" class="contact-in-textarea"></textarea>
+					<input type="button" onclick="sendMessage()" value="Send Message" class="contact-in-btn">
 				</form>
 			</div>
 		</div>
