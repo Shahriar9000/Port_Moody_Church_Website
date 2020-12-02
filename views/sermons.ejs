@@ -19,7 +19,7 @@
                         <a id="allSermonBtn" class="nav-link" href="#"><strong>Available Sermon Recordings</strong></a>
                     </li>
                     <li class="nav-item" id="sermonNoteNav" onclick="activeSermonsNote()">
-                        <a id="sermonNoteBtn" class="nav-link" href="#"><strong>Sermons with Notes</strong></a>
+                        <a id="sermonNoteBtn" class="nav-link" href="#"><strong>More Sermons</strong></a>
                     </li>
                 </ul>
             </div>
@@ -38,7 +38,7 @@
                     <div class="input-group mt-2">
                         <div class="custom-file">
                             <label class="custom-file-label" for="newSermon">Upload a New Sermon File</label>
-                            <input type="file" class="custom-file-input" name="newSermon" id="newSermon" accept="audio/*,video/*" required>
+                            <input type="file" class="custom-file-input" name="newSermon" id="newSermon" accept="audio/*" required>
                         </div>
                         <div class="input-group-append">
                             <button class="btn btn-secondary" type="submit">Uplaod</button>
@@ -46,6 +46,12 @@
                     </div>
                 </form> 
             <% } %>
+            
+            <div class="card scroll px-2" style="background-color: rgba(255, 255, 255, 0.7);" id="sermons_table">
+                
+            </div>
+
+            </div>
         </div>
     </div>
 

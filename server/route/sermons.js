@@ -49,10 +49,30 @@ router.post('/uploadSermon', (req, res) => {
 
 	fs.rename(oldpath, newpath, function (err) {
 		if (err) throw err;
-		console.log("@/uploadSermon file uploaded successfully.");
-        res.redirect('/sermons');
+		const queryString = "INSERT INTO sermons (file_name, path, record_status) VALUES (?, ?, ?)";
+		db.query(queryString, [fileName, newpath, 'Active'], (err, rows, fields) => {
+			if (err) {
+				console.log("Failed to insert at /sermons/: "  + " " + err);
+			}else {
+				console.log("@/uploadSermon sermon " + fileName + " added successfully.");
+			}
+        	res.redirect('/sermons');
+		})
     });
 
+});
+
+
+router.get('/get_sermons', (req, res) => {
+	const queryString = "SELECT * FROM sermons WHERE record_status = 'Active'";
+	db.query(queryString, (err, rows, fields) => {
+	  if (err) {
+		console.log("Failed to query at /get_sermons: " + err)
+	  }
+	  res.json(rows)
+	})
 })
+
+
 
 module.exports = router;
