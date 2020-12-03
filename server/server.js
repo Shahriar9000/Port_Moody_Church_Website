@@ -42,6 +42,9 @@ app.get('/', (req, res) => {
 app.get('/index.css', (req, res) => {
   res.sendFile(path.join(__dirname + '/../public/css/index.css'));
 });
+app.get('/footer.css', (req, res) => {
+	res.sendFile(path.join(__dirname + '/../public/css/footer.css'));
+  });
 
 app.get('/sermons.css', (req, res) => {
   res.sendFile(path.join(__dirname + '/../public/css/sermons.css'));
@@ -58,6 +61,7 @@ app.get('/contact.css', (req, res) => {
 	res.sendFile(path.join(__dirname + '/../public/css/contact.css'));
   });
 
+
 app.get('/bg_img.jpg', (req, res) => {
   res.sendFile(path.join(__dirname + '/../public/img/bg_img.jpg'));
 });
@@ -65,7 +69,9 @@ app.get('/bg_img.jpg', (req, res) => {
 app.get('/heart.png', (req, res) => {
   res.sendFile(path.join(__dirname + '/../public/img/heart.png'));
 });
-
+app.get('/church2.jpg', (req, res) => {
+	res.sendFile(path.join(__dirname + '/../public/img/church2.jpg'));
+  });
 
 app.get('/donation', (req, res) => {
   res.render('donation.ejs', {userId, role});
