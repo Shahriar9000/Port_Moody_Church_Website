@@ -47,6 +47,10 @@ app.get('/sermons.css', (req, res) => {
   res.sendFile(path.join(__dirname + '/../public/css/sermons.css'));
 });
 
+app.get('/staff_info.css', (req, res) => {
+	res.sendFile(path.join(__dirname + '/../public/css/staff_info.css'));
+  });
+
 app.get('/donation.css', (req, res) => {
   res.sendFile(path.join(__dirname + '/../public/css/donation.css'));
 });
@@ -69,6 +73,10 @@ app.get('/donation', (req, res) => {
 
 app.get('/contact', (req, res) => {
 	res.render('contact.ejs', {userId, role});
+  });
+
+app.get('/staff_info', (req, res) => {
+	res.render('staff_info.ejs', {userId, role});
   });
 
 app.get('/zoom', (req, res) => {

@@ -35,9 +35,21 @@
                 <li class="nav-item <%if(active=='zoom'){%>active<%}%>" >
                     <a class="nav-link" href=zoom><strong>Zoom Meeting</strong></a>
                 </li>
-                <li class="nav-item <%if(active=='contact'){%>active<%}%>" >
-                    <a class="nav-link" href="/contact"><strong>Contact</strong></a>
+
+                <li class="nav-item dropdown" >
+                    <a class="nav-link dropdown-toggle" href='#' id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <strong>Contact</strong>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item <%if(active=='contact'){%>active<%}%>" href="/contact">Contact info</a>                      
+                        <a class="dropdown-item <%if(active=='staff_info'){%>active<%}%>" href="/staff_info">Our Staff</a>
+                    </div>
                 </li>
+
+
+                <!-- <li class="nav-item <%if(active=='contact'){%>active<%}%>" >
+                    <a class="nav-link" href="/contact"><strong>Contact</strong></a>
+                </li> -->
                 <% if(userId != "-1" && role == "admin"){ %>
                     <li class="nav-item <%if(active=='admin'){%>active<%}%>" >
                         <a class="nav-link" href=admin><strong>Admin</strong></a>
