@@ -36,12 +36,15 @@ app.get('/', (req, res) => {
 		userId = req.session.userId ? req.session.userId : -1;
 		role = req.session.role? req.session.role : 'regular';
 	}
-  res.render('home.ejs', {userId, role});
+  res.render('index.ejs', {userId, role});
 });
 
 app.get('/index.css', (req, res) => {
   res.sendFile(path.join(__dirname + '/../public/css/index.css'));
 });
+app.get('/footer.css', (req, res) => {
+	res.sendFile(path.join(__dirname + '/../public/css/footer.css'));
+  });
 
 app.get('/sermons.css', (req, res) => {
   res.sendFile(path.join(__dirname + '/../public/css/sermons.css'));
@@ -58,9 +61,6 @@ app.get('/contact.css', (req, res) => {
 	res.sendFile(path.join(__dirname + '/../public/css/contact.css'));
   });
 
-app.get('/home.css', (req, res) => {
-	res.sendFile(path.join(__dirname + '/../public/css/home.css'));
-  });
 
 app.get('/bg_img.jpg', (req, res) => {
   res.sendFile(path.join(__dirname + '/../public/img/bg_img.jpg'));
@@ -84,9 +84,7 @@ app.get('/contact', (req, res) => {
 app.get('/staff_info', (req, res) => {
 	res.render('staff_info.ejs', {userId, role});
   });
-app.get('/home', (req, res) => {
-	res.render('home.ejs', {userId, role});
-  });
+
 app.get('/zoom', (req, res) => {
   res.render('zoom.ejs', {userId, role});
 });
@@ -116,7 +114,7 @@ app.post("/loginUser", (req, res) => {
 					req.session.role = results[0].role;
 					userId = results[0].id;
 					role = results[0].role;
-					res.render('home.ejs', {userId, role});
+					res.render('index.ejs', {userId, role});
 				}
 			})
 

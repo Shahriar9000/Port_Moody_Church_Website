@@ -1,14 +1,73 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html> 
+<html> 
     <head>
         <%- include('./partials/head'); %>
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+        <script src="https://unpkg.com/scrollreveal"></script>
+    
     </head>
-    <body>
-        
-        <%- include('./partials/navbar', {active: "home"}); %>
 
-        <div class="text-center h-100" style="padding-top: 12%; font-size: 10em;">
-            Welcome
-        </div>
-    </body>
+    <body>
+        <%- include('./partials/navbar', {active: "home"}); %>
+        <section class="hero" id="hero">
+            <div class="container-fluid">
+                <h2 class="sub-headline">
+                    <span class="first-letter">W</span>elcome
+                </h2>
+                <!-- <h1 class="headline">Port Moody Pacific Grace MB Church</h1> -->
+                <div class="headline-description">
+                    <div class="separater">
+                        <div class="line line-left"></div>
+                        <div class="asterisk"><i class="fas fa-asterisk"></i></div>
+                        <div class="line line-right"></div>
+                    </div>
+                
+                    <div class="slogen">
+                        <h5>Come grow with us</h5>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="About-Us">
+            <div class="container">
+                <div class="info">
+
+                    <div class="right-info animate-right">
+                        <img src="/church2.jpg" alt="">
+    
+                    </div>
+                    <div class="left-info">
+                        <h1 class="theheadline">About Us</h1>
+
+                        
+                    
+                    <p>
+                        Port Moody Pacific Grace MB Church officially commenced at this current location on February 12, 1995. 
+                        The church established in Port Moody by the Lord's grace and the unity of brothers and sisters. 
+                    </p>
+                    <p>The brothers and sisters of this church firmly believe in following our Lord Jesus Christ's Great Commission 
+                        by spreading the good news and making disciples. With the Lord's Blessing, the number of saved individuals and 
+                        attendees are continually rising. At present, there is an average of about 400 people (including teenagers and children) 
+                        attending Sunday worship, about 250 people regularly attend Sunday School and over 300 people attending the appropriate 
+                        fellowship activities for their age group and background</p>
+
+                        
+                </div>
+
+            </div>
+        </section>
+
+	</body>
+
+
+
+
+    <!-- <%- include('./partials/footer'); %> -->
+
+
+
+
 </html>
