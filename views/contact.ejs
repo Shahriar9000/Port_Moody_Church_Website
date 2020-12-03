@@ -6,7 +6,6 @@
 		<meta name="viewport"content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 		<title>CSS Responsive Contact Form With Google Map</title>
 		<!-- <script src="/js/contact.js" charset="UTF-8"></script> -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.3/socket.io.js"></script>
 		<link rel="stylesheet" href="/contact.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
     </head>
@@ -40,7 +39,7 @@
 			</div>
 		</div>
 
-		<div class="contact-wrap">
+		<!-- <div class="contact-wrap">
 			<div class="contact-in">
 				<h1>Send a Message</h1>
 				<form>
@@ -51,19 +50,8 @@
 					<input type="button" onclick="sendMessage()" value="Send Message" class="contact-in-btn">
 				</form>
 			</div>
-		</div>
-	<script>
-		var socket = io("http://127.0.0.1:8080");
-		function sendMessage() {
-			
-			socket.emit("messageSent", {
-				"name": document.getElementById("name").value,
-				"email": document.getElementById("email").value,
-				"subject": document.getElementById("subject").value,
-				"message": document.getElementById("message").value
-			});
-		}
-	</script>
+		</div> -->
+
 	</body>
 
 

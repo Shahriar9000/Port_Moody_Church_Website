@@ -4,8 +4,6 @@ const path = require('path');
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const db = require('./db/index');
-const http = require("http").createServer(app);
-const io = require("socket.io")(http);
 
 const noteRouter = require('./route/notes');
 const sermonsRouter =require('./route/sermons');
@@ -170,17 +168,7 @@ app.get('/logout', (req, res) => {
 });
 
 
-// app.listen( process.env.PORT || '8000', () => {
-//   console.log(`Server is running on port: ${process.env.POST || '8000'}`);
-// });
-
-http.listen(process.env.PORT || '8080', () => {
-	console.log(`Server is running on port: ${process.env.POST || '8080'}`);
-	io.on("connection", function(socket) {
-		console.log("User" + socket.id);
-	
-		socket.on("messageSent", function(message) {
-			socket.broadcast.emit("messageSent", message);
-		});
-	});
+app.listen( process.env.PORT || '8080', () => {
+  console.log(`Server is running on port: ${process.env.POST || '8080'}`);
 });
+
