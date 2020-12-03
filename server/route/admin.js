@@ -25,7 +25,12 @@ router.get('/', (req, res, next) => {
     userId = req.session.userId ? req.session.userId : -1;
     role = req.session.role ? req.session.role : 'regular';
   }
-  res.render('admin.ejs', {userId, role});
+  if(userId != -1 && role == "admin"){
+	res.render('admin.ejs', {userId, role});
+  }else {
+	res.render("index.ejs", {userId, role});
+  }
+  
 }); 
 
 router.get('/admin.js', (req, res) => {
