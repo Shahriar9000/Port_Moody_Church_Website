@@ -51,8 +51,8 @@
                     <a class="nav-link" href="/contact"><strong>Contact</strong></a>
                 </li> -->
                 <% if(userId != "-1" && role == "admin"){ %>
-                    <li class="nav-item <%if(active=='admin'){%>active<%}%>" >
-                        <a class="nav-link" href=admin><strong>Admin</strong></a>
+                    <li class="nav-item <%if(active=='Admin'){%>active<%}%>" >
+                        <a class="nav-link" href="/admin"><strong>Admin</strong></a>
                     </li>  
                 <% } %>            
                 <li class="nav-item <%if(active=='login'){%>active<%}%>" >

@@ -46,6 +46,7 @@ router.post('/uploadSermon', (req, res) => {
 	var fileName = req.files.newSermon.name;
 	var oldpath = req.files.newSermon.tempFilePath;
 	var newpath = path.join(__dirname + '../../../public/sermons/' + fileName);
+	console.log(fileName);
 
 	fs.rename(oldpath, newpath, function (err) {
 		if (err) throw err;
