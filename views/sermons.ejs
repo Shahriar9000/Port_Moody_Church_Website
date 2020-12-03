@@ -51,7 +51,7 @@
 
             <div class="card form-popup" id="add_sermon_note_container">
                 <form id="add_sermon_note_form" action="" class="form-container" method="POST">
-                    <h5 id="add_sermon_note_header"></h5>
+                    <h4 class="card-title pt-2" id="add_sermon_note_header"></h4>
                     <div class="form-group">
                         <label for="add_sermon_note_title"><b>Title</b></label>
                         <input class="form-control" type="text" id="add_sermon_note_title" name="add_sermon_note_title" required />
@@ -63,6 +63,13 @@
                     <button id="close_add_sermon_note_btn" type="button" class="btn btn-secondary float-right m-2">Close</button>
                     <button id="save_add_sermon_note_btn" type="submit" class="btn btn-secondary float-right m-2">Save</button>
                 </form>
+            </div>
+            
+            <div class="card scroll form-popup px-2" id="display_sermon_note_container" style="max-height: 90%;">
+                <h4 class="card-title pt-2" id="display_sermon_note_header"></h4>
+                <div id="display_sermon_note_table">
+
+                </div>
             </div>
             
         </div>

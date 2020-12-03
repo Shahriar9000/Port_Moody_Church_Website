@@ -97,6 +97,19 @@ router.post('/add_note/:sermon_id', (req, res) => {
 			}
 		})
 	}
-  })
+})
+
+router.get('/get_notes/:sermon_id', (req, res) => {
+	const sermon_id = req.params.sermon_id
+	const queryString = "SELECT notes.title, notes.content FROM sermons LEFT JOIN sermon_has_notes AS shn ON shn.sermon_id = sermons.sermon_id" + 
+						" LEFT JOIN notes ON notes.note_id = shn.note_id WHERE sermons.record_status = 'Active' AND notes.record_status = 'Active'" +
+						" AND sermons.sermon_id = " + sermon_id;
+	db.query(queryString, (err, rows, fields) => {
+	  if (err) {
+		console.log("Failed to query at /get_note: " + err)
+	  }
+	  res.json(rows)
+	})
+})
 
 module.exports = router;

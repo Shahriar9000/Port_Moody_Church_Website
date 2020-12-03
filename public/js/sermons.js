@@ -56,7 +56,7 @@ function displaySermons(all_sermons) {
 
         var show_button = document.createElement("button");
         show_button.classList.add("btn", "btn-secondary", "float-right", "m-2");
-        show_button.setAttribute("onclick", "displayNotes(" + sermon_id + ")");
+        show_button.setAttribute("onclick", "open_display_note_form(" + sermon_id + ")");
         show_button.id = "show_note_" + i;
         show_button.innerHTML = "See Notes";
 
@@ -75,11 +75,90 @@ function displaySermons(all_sermons) {
 }
 
 
-function displayNotes(sermon_id) {
+function open_display_note_form(sermon_id) {
+    // in case add form is open
+    closeAddForm();
 
+    document.getElementById("display_sermon_note_container").style.display = "block";
+    document.getElementById("display_sermon_note_header").innerHTML = "Notes for Sermon ID: " + sermon_id;
+
+    // empty the table before diplaying notes
+    var notes_table = document.getElementById("display_sermon_note_table");
+    while (notes_table.hasChildNodes()) {  
+        notes_table.removeChild(notes_table.firstChild);
+    }
+    
+    var request = new XMLHttpRequest();
+    var requestURL = '/sermons/get_notes/'+sermon_id;
+    request.open('GET', requestURL);
+    request.responseType = 'json';
+    request.send();
+    request.onload = function() {
+        var all_notes = request.response;
+        displayNotes(all_notes);
+    }
 }
 
+
+function displayNotes(all_notes) {
+    var table = document.getElementById("display_sermon_note_table");
+
+    if (all_notes == null) {
+        var msg = document.createElement("p");
+        msg.classList.add("card-title");
+        msg.innerHTML = "No notes. Please go to add notes.";
+
+        table.appendChild(msg);
+    }
+    else {
+        for (var i in all_notes) {
+            const title = all_notes[i].title;
+            const content = all_notes[i].content;
+
+            var note_card = document.createElement("div");
+            note_card.classList.add("mb-2");
+
+            var note_title = document.createElement("h5");
+            note_title.classList.add("card-title");
+            note_title.id = "note_title_" + i;
+            note_title.innerHTML = title;
+
+            var note_content = document.createElement("textarea");
+            note_content.classList.add("card-text", "px-2", "mr-2", "form-control");
+            note_content.id = "note_content" + i;
+            note_content.setAttribute("rows", "3");
+            note_content.setAttribute("disabled", "true");
+            note_content.innerHTML = content;
+
+            note_card.appendChild(note_title);
+            note_card.appendChild(note_content);
+            table.appendChild(note_card); 
+        }
+    }
+
+    var close_button = document.createElement("button");
+    close_button.classList.add("btn", "btn-secondary", "float-right", "mt-2");
+    close_button.setAttribute("onclick", "close_sermon_note_table()");
+    close_button.innerHTML = "Close";
+
+    table.appendChild(close_button);
+}
+
+
+function close_sermon_note_table() {
+    document.getElementById("display_sermon_note_container").style.display = "none";
+
+    var notes_table = document.getElementById("display_sermon_note_table");
+    while (notes_table.hasChildNodes()) {  
+        notes_table.removeChild(notes_table.firstChild);
+    }
+}
+
+
 function open_add_note_form(sermon_id) {
+    // in case display table is open
+    close_sermon_note_table();
+
     document.getElementById("add_sermon_note_container").style.display = "block";
     document.getElementById("add_sermon_note_header").innerHTML = "Add Notes for Sermon ID: " + sermon_id;
 
@@ -87,12 +166,14 @@ function open_add_note_form(sermon_id) {
     document.getElementById("close_add_sermon_note_btn").setAttribute("onclick", "closeAddForm()");
 }
 
+
 function closeAddForm() {
     document.getElementById("add_sermon_note_title").value = "";
     document.getElementById("add_sermon_note_content").value = "";
 
     document.getElementById("add_sermon_note_container").style.display = "none";
 }
+
 
 function add_note(sermon_id) {
     var form = document.getElementById("add_sermon_note_form");
