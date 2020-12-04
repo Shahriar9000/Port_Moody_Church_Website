@@ -59,12 +59,13 @@ router.get('/zoom.js', (req, res) => {
 
 
 router.post('/add', function (req, res) {
-    // email = "host1.cmpt@gmail.com";
+    //email = "host2.cmpt@gmail.com";
     // zoom_id is a userID needed to create a meeting for the zoom API
     // a user is defined as a "user" within a organization with admin abilities
-    if (zoom_Id == undefined) {
+    if (zoom_Id == null | zoom_Id == undefined) {
       console.log("not a verified admin for meeting creation");
       res.redirect('/zoom');
+      return;
     }
 
     const name = req.body.meeting_host;
