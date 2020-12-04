@@ -106,6 +106,7 @@ app.post("/loginUser", (req, res) => {
 				}else{
 					req.session.userId = results[0].id;
 					req.session.role = results[0].role;
+					req.session.zoomId = results[0].zoom_id;
 					userId = results[0].id;
 					role = results[0].role;
 					res.render('index.ejs', {userId, role});
