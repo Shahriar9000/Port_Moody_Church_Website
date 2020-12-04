@@ -46,7 +46,6 @@ function printUserTable(users) {
         role_form.id = "role_form_" + user_id;
         var selectList = document.createElement("select");
         selectList.name = "mySelect" + user_id;
-        // selectList.name = user_id;
         selectList.classList.add(user_id);
         role_form.appendChild(selectList);
         var option1 = document.createElement("option");

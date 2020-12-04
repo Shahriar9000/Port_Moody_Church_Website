@@ -65,8 +65,6 @@ router.post("/changeRole/:id", (req, res) => {
 	const user_id = req.params.id;
 	const selected_name = "mySelect" + user_id;
 	const selected_value = req.body[selected_name];
-	console.log(selected_value);
-	console.log(req.body);
 
 	query = "UPDATE `users` SET `role` = '" + selected_value + "' WHERE `users`.`id` =" + user_id;
 	db.query(query, (err, rows, fields) => {
