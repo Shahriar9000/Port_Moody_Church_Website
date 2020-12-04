@@ -39,10 +39,31 @@ function printUserTable(users) {
         delete_button.classList.add("btn", "btn-outline-secondary", "mt-2");
         delete_button.id = "delete_user_" + user_id;
         delete_button.setAttribute("onclick", "deleteUser(" + user_id + ")");
-        
         delete_button.innerHTML = "Delete";
 
+        var role_form = document.createElement("form");
+        role_form.setAttribute("method", "post");
+        var selectList = document.createElement("select");
+        selectList.id = "mySelect" + user_id;
+        role_form.appendChild(selectList);
+        var option1 = document.createElement("option");
+        option1.value = role;
+        option1.text = role;
+        selectList.appendChild(option1);
+        if(role == "regular"){
+            var option2 = document.createElement("option");
+            option2.value = "admin";
+            option2.text = "admin";
+            selectList.appendChild(option2);
+        } else{
+            var option2 = document.createElement("option");
+            option2.value = "regular";
+            option2.text = "regular";
+            selectList.appendChild(option2);
+        }
+
         user_cell4.appendChild(delete_button);
+        user_cell5.appendChild(role_form);
         table.appendChild(user_table);
 
     }
