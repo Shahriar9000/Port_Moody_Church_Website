@@ -16,24 +16,22 @@
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(255, 255, 255, 0.7);">
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav nav-fill w-100" id="sermonNavBtns">
-                    <li class="nav-item active" id="allSermonNav" onclick="activeAllSermons()">
+                    <li class="nav-item active" id="sermonNoteNav" onclick="activeSermonsNote()">
                         <a id="allSermonBtn" class="nav-link" href="#"><strong>Available Sermon Recordings</strong></a>
                     </li>
-                    <li class="nav-item" id="sermonNoteNav" onclick="activeSermonsNote()">
+                    <li class="nav-item" id="allSermonNav" onclick="activeAllSermons()">
                         <a id="sermonNoteBtn" class="nav-link" href="#"><strong>More Sermons</strong></a>
                     </li>
                 </ul>
             </div>
         </nav>
-        <!-- <div class="content">
-            <h4 class="title">Available Sermon Recordings</h4>
-        </div> -->
-        <div class="sub_recording" id="subRecording">
+        
+        <div class="sub_recording" id="subRecording" style="display: none;">
                 <iframe src="https://drive.google.com/embeddedfolderview?id=1vtZtC7WWB0aj8qz78EFK1l19vB2bvMt4#grid" style="width:100%; height:1000px; "></iframe>
 
         </div>
 
-        <div id="sermonsNotes" style="display: none;">
+        <div id="sermonsNotes">
             <% if(userId != "-1" && role == "admin"){ %>
                 <form action="/sermons/uploadSermon" method="POST" enctype="multipart/form-data">
                     <div class="input-group mt-2">

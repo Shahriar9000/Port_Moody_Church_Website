@@ -1,3 +1,5 @@
+get_all_sermons();
+
 function activeAllSermons() {
     document.getElementById("subRecording").style.display = "block";
     document.getElementById("sermonsNotes").style.display = "none";
@@ -14,7 +16,6 @@ function activeSermonsNote() {
     document.getElementById("sermonNoteNav").classList.add("active");
     document.getElementById("allSermonNav").classList.remove("active");
 
-    get_all_sermons();
 }
 
 function get_all_sermons() {
@@ -31,6 +32,13 @@ function get_all_sermons() {
 
 function displaySermons(all_sermons) {
     var table = document.getElementById("sermons_table");
+
+    if (Object.keys(all_sermons).length == 0) {
+        var msg = document.createElement("h5");
+        msg.style.margin = "10px auto";
+        msg.innerHTML = "No available sermon. Please go to more sermons.";
+        table.appendChild(msg);
+    }
 
     for (var i in all_sermons) {
         const sermon_id = all_sermons[i].sermon_id;
@@ -103,7 +111,7 @@ function open_display_note_form(sermon_id) {
 function displayNotes(all_notes) {
     var table = document.getElementById("display_sermon_note_table");
 
-    if (all_notes == null) {
+    if (Object.keys(all_notes).length == 0) {
         var msg = document.createElement("p");
         msg.classList.add("card-title");
         msg.innerHTML = "No notes. Please go to add notes.";
