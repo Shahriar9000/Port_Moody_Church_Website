@@ -1,0 +1,61 @@
+<!DOCTYPE html> 
+<html> 
+    <head>
+        <%- include('./partials/head'); %>
+        
+        <meta http-equiv="Content-Type"content="text/html; charset=utf-8"/>
+		<meta name="viewport"content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="stylesheet" href="calendar.css">
+        <script src="/display_event/event_handler.js" charset="UTF-8"></script>
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <%- include('./partials/navbar', {active: "display_event"}); %>
+        <div class="card p-3" style="background-color: rgba(255, 255, 255, 0.7); width: 90vh; margin:auto">
+			      <div class="contact-wrap">
+                <h3>Upcoming Events</h3>
+            </div>
+        </div>
+        <br></br>
+              
+		<div class="card p-4" style="background-color: rgba(255, 255, 255, 0.7); width: 180vh; margin:auto">
+            <div class="contact-wrap">
+                <button type="button" class="btn btn-info" onclick="show_all_events()">Show All Events</button>
+                <% if(userId != "-1" && role == "admin"){ %>
+
+                <form class="form-inline float-right" action="/display_event/delete_event" method="POST">
+                    <div class="form-group mx-sm-3 mb-2">
+                      <label for="Event_id" class="sr-only">Event Id</label>
+                      <input type="number" class="form-control" id="Event_delete_id" name="id" placeholder="Event Id to delete" min="1">
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2">Delete</button>
+                  </form>
+                  <% } %>
+                  <small id="emailHelp" class="form-text text-muted float-right">*Only Admins can delete any event</small>
+            </div>
+
+            <div class="contact-wrap"></div>
+                <div class="table-in">
+                    <table class="table table-hover" id="event_table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Day</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Event</th>
+                          </tr>
+                        </thead>
+                        
+                      </table>
+                </div>
+                
+            </div>
+    </div>
+    
+		
+	</body>
+</html>
+

@@ -1,4 +1,5 @@
 <body>
+    
 <nav class="navbar_header" id="ftco-navbar">
 <div class="container">
     <a class="navbar-brand" href="https://pmpgmbc.ca/" target="_blank"> Port Moody <span>Pacific Grace MB Church</span></a>
@@ -25,6 +26,16 @@
 
                 <li class="nav-item <%if(active=='zoom'){%>active<%}%>" >
                     <a class="nav-link" href=zoom><strong>Zoom Meeting</strong></a>
+                </li>
+                
+                <li class="nav-item dropdown" >
+                    <a class="nav-link dropdown-toggle" href='#' id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <strong>Events</strong>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item <%if(active=='create_event'){%>active<%}%>" href="/create_event">Create Event</a>                      
+                        <a class="dropdown-item <%if(active=='display_event'){%>active<%}%> " href="/display_event">View Upcoming Events</a>
+                    </div>
                 </li>
 
                 <li class="nav-item dropdown <%if(active=='contact' || active=='staff_info'){%>active<%}%>" >
