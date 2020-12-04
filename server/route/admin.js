@@ -38,7 +38,7 @@ router.get('/admin.js', (req, res) => {
 });
 
 router.get('/getTable', (req, res) => {
-	const query = "SELECT `id`, `name`, `email` FROM `users` WHERE role = 'regular'";
+	const query = "SELECT `id`, `name`, `email`, `role` FROM `users`";
 	db.query(query, (err, rows, fields) => {
 		if(err) {
 			console.log("Failed to get user table: " + err);

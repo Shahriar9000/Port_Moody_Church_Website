@@ -20,15 +20,19 @@ function printUserTable(users) {
         const user_id = users[i].id;
         const name = users[i].name;
         const email = users[i].email;
+        const role = users[i].role;
 
         var user_table = document.createElement("tbody");
         var user_row = user_table.insertRow();
         var user_cell1 = user_row.insertCell(0);
         var user_cell2 = user_row.insertCell(1);
         var user_cell3 = user_row.insertCell(2);
+        var user_cell4 = user_row.insertCell(3);
+        var user_cell5 = user_row.insertCell(4);
         
         user_cell1.innerHTML = name;
         user_cell2.innerHTML = email;
+        user_cell3.innerHTML = role;
 
         var delete_button = document.createElement("form");
         delete_button.setAttribute("method", "post");
@@ -38,7 +42,7 @@ function printUserTable(users) {
         
         delete_button.innerHTML = "Delete";
 
-        user_cell3.appendChild(delete_button);
+        user_cell4.appendChild(delete_button);
         table.appendChild(user_table);
 
     }
