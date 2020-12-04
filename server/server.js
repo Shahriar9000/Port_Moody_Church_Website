@@ -5,9 +5,11 @@ const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const db = require('./db/index');
 
+
 const noteRouter = require('./route/notes');
 const sermonsRouter =require('./route/sermons');
-const adminRouter =require('./route/admin')
+const adminRouter =require('./route/admin');
+const eventRouter =require('./route/events');
 
 var userId = -1;
 var role = 'regular';
@@ -54,8 +56,13 @@ app.get('/staff_info.css', (req, res) => {
 app.get('/donation.css', (req, res) => {
   res.sendFile(path.join(__dirname + '/../public/css/donation.css'));
 });
+
 app.get('/contact.css', (req, res) => {
 	res.sendFile(path.join(__dirname + '/../public/css/contact.css'));
+  });
+
+ app.get('/calendar.css', (req, res) => {
+	res.sendFile(path.join(__dirname + '/../public/css/calendar.css'));
   });
 
 app.get('/bg_img.jpg', (req, res) => {
@@ -83,10 +90,13 @@ app.get('/zoom', (req, res) => {
   res.render('zoom.ejs', {userId, role});
 });
 
+// app.use('/create_event', eventRouter);
+
 app.use('/notes', noteRouter);
 app.use('/sermons', sermonsRouter);
 
-app.use('/admin', adminRouter)
+app.use('/admin', adminRouter);
+
 
 app.get('/login', checkUserLogin, (req, res) => {
 	res.render('login.ejs', {userId: -1, role: 'regular', errmsg: ''});
@@ -147,7 +157,7 @@ app.post("/registerUser", (req, res) => {
 		if(error){
 			console.log(error);
 		}
-		if(results.length > 0){
+		else if(results.length > 0){
 			return res.render('register.ejs', {userId, role, errmsg: 'This email is already in use.'});
 		}else if(password != passwordConfirm){
 			return res.render('register.ejs', {userId, role, errmsg: 'Password do not match'});
@@ -175,7 +185,68 @@ app.get('/logout', (req, res) => {
   res.redirect('/');;
 });
 
+// EVENT-----------------------------------------------------------------
+app.get('/create_event', (req, res) => {
+    res.render('create_event.ejs', {userId, role});
+});
+
+
+app.post('/create_event/add_event', (req, res) => {
+	const event_date = req.body.date;
+	const event_time = req.body.time;
+	const event_type = req.body.event_type;
+	// console.log(event_time);
+  	
+	const queryString = "INSERT INTO Events (Event_date , Event_time, Event_Type) VALUES (?, ?, ?)";
+	db.query(queryString, [event_date, event_time, event_type], (err, rows, fields) => {
+	if (err) {
+		console.log("Failed to insert at /add_event/: "  + " " + err);
+	}else {
+		console.log("@/add_event event: " + event_type + " added on " + event_date);
+	}
+	
+	res.redirect('/create_event');
+	})
+})
+
+app.get('/display_event/event_handler.js', (req, res) => {
+	res.sendFile(path.join(__dirname + '/../public/js/event_handler.js'));
+  });
+
+app.get('/display_event', (req, res) => {
+	res.render('display_event.ejs', {userId, role});
+  });
+
+
+app.get('/display_event/show_all_events', (req, res) => {
+	const queryString = "SELECT * FROM Events";
+	db.query(queryString, (err, rows, fields) => {
+	  if (err) {
+		console.log("Failed to query at /show_all_events: " + err);
+	  }
+	// console.log(rows)
+	res.json(rows);
+	})
+  })
+
+app.post('/display_event/delete_event', (req, res) => {
+	const event_id = req.body.id;
+	console.log('Deleting Event..');
+	const queryString = "DELETE FROM Events WHERE Id = ?";
+	db.query(queryString, [event_id], (err, rows, fields) => {
+	  if (err) {
+		console.log("Failed to query at /delete_event/: " + event_id + " " + err);
+	  } else {
+		  console.log("@/delete_event/ Deleting event with id " + event_id);
+	  }
+	  res.redirect('/display_event');
+	})
+  })
+
+
 
 app.listen( process.env.PORT || '8080', () => {
   console.log(`Server is running on port: ${process.env.POST || '8080'}`);
 });
+
+
