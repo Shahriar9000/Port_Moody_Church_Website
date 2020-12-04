@@ -50,7 +50,6 @@ router.get('/getTable', (req, res) => {
 
 router.post('/delete_user/:id', (req, res) => {
 	const user_id = req.params.id;
-	console.log(user_id);
 	const query = "DELETE FROM users WHERE id = ?";
 	db.query(query, [user_id], (err, rows, fields) => {
 		if(err) {
@@ -62,5 +61,22 @@ router.post('/delete_user/:id', (req, res) => {
 	})
 });
 
+router.post("/changeRole/:id", (req, res) => {
+	const user_id = req.params.id;
+	const selected_name = "mySelect" + user_id;
+	const selected_value = req.body[selected_name];
+	console.log(selected_value);
+	console.log(req.body);
 
+	query = "UPDATE `users` SET `role` = '" + selected_value + "' WHERE `users`.`id` =" + user_id;
+	db.query(query, (err, rows, fields) => {
+		if (err) {
+			console.log("Failed to update user role " + user_id + " " + err);
+		} else {
+			console.log("Updated user role: " + user_id);
+		}
+		res.redirect("/admin");
+	})
+
+})
 module.exports = router;

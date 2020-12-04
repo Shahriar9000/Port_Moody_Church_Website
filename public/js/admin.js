@@ -43,8 +43,11 @@ function printUserTable(users) {
 
         var role_form = document.createElement("form");
         role_form.setAttribute("method", "post");
+        role_form.id = "role_form_" + user_id;
         var selectList = document.createElement("select");
-        selectList.id = "mySelect" + user_id;
+        selectList.name = "mySelect" + user_id;
+        // selectList.name = user_id;
+        selectList.classList.add(user_id);
         role_form.appendChild(selectList);
         var option1 = document.createElement("option");
         option1.value = role;
@@ -61,6 +64,7 @@ function printUserTable(users) {
             option2.text = "regular";
             selectList.appendChild(option2);
         }
+        role_form.setAttribute("onchange", "changeRole(" + user_id + ")");
 
         user_cell4.appendChild(delete_button);
         user_cell5.appendChild(role_form);
@@ -72,5 +76,11 @@ function printUserTable(users) {
 function deleteUser(user_id){
     var form = document.getElementById("delete_user_" + user_id);
     form.action = "/admin/delete_user/" + user_id;
+    form.submit();
+}
+
+function changeRole(user_id) {
+    var form = document.getElementById("role_form_" + user_id);
+    form.action = "/admin/changeRole/" + user_id;
     form.submit();
 }
