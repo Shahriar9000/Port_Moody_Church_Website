@@ -15,7 +15,21 @@
     display:inline-block;
 }
 
-#top_row button {
+#top_row  button{
     float:right;
 }
+
+
+/* The popup form - hidden by default */
+#meeting_edit {
+    display: none;
+    position: absolute;
+    width: 70%;
+    margin-left: 2.5%;
+    margin-top: -275px;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 10px;
+    padding: 20px; 
+}
+
 
