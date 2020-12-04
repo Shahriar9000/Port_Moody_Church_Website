@@ -1,21 +1,12 @@
-<!-- <div id="header">
-    <div id="header-wrapper">
-            
-        <h1><a href="/">Port Moody Pacific Grace MB Church </a></h1>
-        <h2><a href="#">慕 迪 港 頌 恩 堂 </a> </h2>        
-            
-    </div>
-</div> -->
-
 <body>
 <nav class="navbar_header" id="ftco-navbar">
 <div class="container">
-    <a class="navbar-brand" href="/"> Port Moody <span>Pacific Grace MB Church</span></a>
+    <a class="navbar-brand" href="https://pmpgmbc.ca/" target="_blank"> Port Moody <span>Pacific Grace MB Church</span></a>
 </div>
 </nav>
 
 <div class="mb-4">
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(255, 255, 255, 0.7);"> 
+    <nav class="navbar navbar-expand-lg navbar-light pb-0" style="background-color: rgba(255, 255, 255, 0.7);"> 
 
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav nav-fill w-100" id="navBtns">
@@ -36,7 +27,7 @@
                     <a class="nav-link" href=zoom><strong>Zoom Meeting</strong></a>
                 </li>
 
-                <li class="nav-item dropdown" >
+                <li class="nav-item dropdown <%if(active=='contact' || active=='staff_info'){%>active<%}%>" >
                     <a class="nav-link dropdown-toggle" href='#' id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <strong>Contact</strong>
                     </a>
@@ -47,9 +38,6 @@
                 </li>
 
 
-                <!-- <li class="nav-item <%if(active=='contact'){%>active<%}%>" >
-                    <a class="nav-link" href="/contact"><strong>Contact</strong></a>
-                </li> -->
                 <% if(userId != "-1" && role == "admin"){ %>
                     <li class="nav-item <%if(active=='Admin'){%>active<%}%>" >
                         <a class="nav-link" href="/admin"><strong>Admin</strong></a>
@@ -73,12 +61,15 @@
                     </strong></a>
                 </li>
                 <div class="search bar">
-                    <form action="https://www.google.com/search">
-                        <input id="text" name ="q"list="datalist_1" placeholder = "Search..." style="border-radius: 10px"/>
-                        <button id='butt' class="btn btn-secondary">GO</button><br />
+                    <form action="https://www.google.com/search" target="_blank">
+                        <div class="input-group mb-3">
+                            <input class="form-control" id="text" name ="q"list="datalist_1" placeholder = "Search..."/>
+                            <div class="input-group-prepend">
+                                <button id='butt' class="btn btn-secondary">GO</button>
+                            </div>
+                          </div>
                       </form>
-                    </div>
-                
+                </div>
             </ul>
         </div>
     </nav>
