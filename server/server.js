@@ -46,6 +46,10 @@ app.get('/footer.css', (req, res) => {
 	res.sendFile(path.join(__dirname + '/../public/css/footer.css'));
   });
 
+  app.get('/footer_new.css', (req, res) => {
+	res.sendFile(path.join(__dirname + '/../public/css/footer_new.css'));
+  });
+
 app.get('/sermons.css', (req, res) => {
   res.sendFile(path.join(__dirname + '/../public/css/sermons.css'));
 });
@@ -65,7 +69,9 @@ app.get('/contact.css', (req, res) => {
 app.get('/bg_img.jpg', (req, res) => {
   res.sendFile(path.join(__dirname + '/../public/img/bg_img.jpg'));
 });
-
+app.get('/churchIndoor2.jpg', (req, res) => {
+	res.sendFile(path.join(__dirname + '/../public/img/churchIndoor2.jpg'));
+  });
 app.get('/heart.png', (req, res) => {
   res.sendFile(path.join(__dirname + '/../public/img/heart.png'));
 });
