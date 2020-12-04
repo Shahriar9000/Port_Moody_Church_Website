@@ -8,6 +8,7 @@ const db = require('./db/index');
 const noteRouter = require('./route/notes');
 const sermonsRouter =require('./route/sermons');
 const adminRouter =require('./route/admin')
+const zoomRouter = require('./route/zoom')
 
 var userId = -1;
 var role = 'regular';
@@ -79,9 +80,8 @@ app.get('/staff_info', (req, res) => {
 	res.render('staff_info.ejs', {userId, role});
   });
 
-app.get('/zoom', (req, res) => {
-  res.render('zoom.ejs', {userId, role});
-});
+
+app.use('/zoom', zoomRouter);
 
 app.use('/notes', noteRouter);
 app.use('/sermons', sermonsRouter);
