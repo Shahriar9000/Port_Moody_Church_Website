@@ -1,0 +1,37 @@
+#meeting_box {
+    margin:10px auto;
+    height:500px;        
+    width: 95%;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    padding: 20px; 
+    overflow: auto;
+  }
+
+#top_row {
+    text-align: center;
+}
+
+#row {
+    display:inline-block;
+}
+
+#top_row  button{
+    float:right;
+}
+
+
+/* The popup form - hidden by default */
+#meeting_edit {
+    display: none;
+    position:fixed;
+    top:50%;
+    left:50%;
+    width:750px;  /* adjust as per your needs */
+    height:580px;   /* adjust as per your needs */
+    margin-left:-375px;   /* negative half of width above */
+    margin-top:-300px;   /* negative half of height above */
+    background-color: rgba(255, 255, 255, 1);
+    padding: 20px; 
+}
+
