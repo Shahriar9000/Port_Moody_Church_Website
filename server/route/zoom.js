@@ -128,6 +128,65 @@ router.post('/add', function (req, res) {
   })
   
 
+
+
+  router.post('/delete', function (req, res) {
+    //email = "host2.cmpt@gmail.com";
+    // zoom_id is a userID needed to create a meeting for the zoom API
+    // a user is defined as a "user" within a organization with admin abilities
+    if (zoom_Id == null | zoom_Id == undefined) {
+      console.log("not a verified admin for meeting deletion");
+      res.redirect('/zoom');
+      return;
+    }
+    console.log(req.body.meeting_id);
+    meeting_id = req.body.meeting_id
+
+    var options = {
+      method: 'DELETE',
+      uri: "https://api.zoom.us/v2/meetings/" + meeting_id, 
+      qs: {
+          status: 'active' 
+      },
+      auth: {
+          'bearer': token
+      },
+      headers: {
+          'User-Agent': 'Zoom-api-Jwt-Request',
+          'content-type': 'application/json'
+      },
+      json: true //Parse the JSON string in the response
+  };
+
+  //Use request-promise module's .then() method to make request calls.
+  rp(options)
+  .then(function (response) {
+      // success if reached here
+      //console.log(response);
+      resp = response
+
+      var queryString = "DELETE FROM meetings WHERE meeting_id = ?"
+      db.query(queryString, [meeting_id], (err, rows, fields) => {
+        if (err) {
+            console.log("Failed to delete meeting:"  + " " + err);
+        }else {
+            console.log("sucessfully deleted meeting");
+        }
+        res.redirect('/zoom');
+        })
+  })
+  .catch(function (err) {
+      // API call failed...
+      console.log('API call failed, reason ', err);
+      res.redirect('/zoom');
+  });
+  })
+
+
+
+
+
+
   module.exports = router;
 
 

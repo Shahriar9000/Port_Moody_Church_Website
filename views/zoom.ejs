@@ -30,9 +30,12 @@
                     <th scope="col">Minutes</th>
                     <th scope="col">Zoom Link</th>
                     <th scope="col">Notify</th>
+                    <% if(userId != "-1" && role == "admin"){ %>
+                        <th scope="col">  Remove   </th>
+                    <% } %> 
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="meeting_content">
                     <% if(rows.length > 0){ %>
                         <% rows.sort((a,b)=>a.date-b.date); %>
                         <% rows.forEach(met => { %>
@@ -44,7 +47,7 @@
                                 <td> <%= met.duration %> </td>
                                 <td> <a href="<%= met.link %>"> Join Meeting </a></td>
                                 <td> 
-                                    <div title="Add to Calendar" class="addeventatc">
+                                    <div title="Add to Calendar" class="addeventatc" id="calendar">
                                         Add to Calendar
                                         <span class="start"><%= met.date.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }); %></span>
                                         <span class="title"><%= met.title %></span>
@@ -52,6 +55,14 @@
                                         <span class="location"><%= met.link %></span>
                                     </div>    
                                 </td>
+                                <% if(userId != "-1" && role == "admin"){ %>
+                                    <td> 
+                                        <form action="/zoom/delete" method="post">
+                                            <input type="hidden" name="meeting_id" value="<%= met.meeting_id%>">
+                                            <button type="submit" class="btn btn-danger" name="delete_btn">Delete</button>
+                                        </form>
+                                    </td>
+                                <% } %> 
                             </tr>
                         <% }) %>
                     <% } else { %>
@@ -88,6 +99,10 @@
                     <button id="create_meeting_btn" type="submit" class="btn btn-secondary float-right m-2">Create</button>
                 </form>
             </div>
+
+
+
+
 
         </div>
 
