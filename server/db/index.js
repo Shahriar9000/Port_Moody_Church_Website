@@ -10,6 +10,12 @@ const db = mysql.createConnection({
   database: 'cmpt470',
   host: 'localhost',
 })
+// const db = mysql.createConnection({
+//   host: "db4free.net",
+//   user: 'shahriar',
+//   password: '1q2w3e4r5t6y',
+//   database: 'database_cmpt'
+// })
 
 db.connect(function(error) {
   if (!!error) {

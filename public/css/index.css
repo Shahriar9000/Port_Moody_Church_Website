@@ -30,4 +30,166 @@ body {
 	color: rgb(104,104,104);
 	font-size: 20pt;
 }
-/* ------------------------------------ */
+
+.hero{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    overflow:hidden;
+    margin-top:-23px;
+}
+
+
+.sub-headline{
+    margin-top:-23px;
+    font-size: 200px;
+    font-family: 'Brush Script MT', cursive;
+    color: goldenrod;
+    font-weight: 50;
+    animation: goUp 1s forwards;
+}
+.headline{
+    margin-top:-23px;
+    font-family: 'Arial Black', sans-serif;
+    color:wheat;
+    animation: goBigger 1s forwards;
+}
+
+.asterisk{
+    color: wheat;
+}
+
+.slogen{
+    color: wheat;
+    animation: goDown 1s forwards;
+}
+
+.separater{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.line{
+    width: 100%;
+    max-width: 20rem;
+    height: 0.25rem;
+    background-color: white;
+    position: relative;
+    animation: goWider 4s forwards;
+}
+
+@keyframes goUp{
+    0%{
+        transform: translateY(5rem);
+
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes goDown{
+    0%{
+        transform: translateY(-1rem);
+
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes goBigger{
+    0%{
+        transform: scale(0.01);
+
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes goWider{
+    0%{
+        width: 0ex;
+
+    }
+    100%{
+        opacity: 1;
+        width: 100%;
+    }
+}
+
+
+.About-Us{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 40rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: center;
+    overflow:hidden;
+}
+
+.churchIndoor{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 40rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: center;
+    overflow:hidden;
+}
+
+#church2{
+	width: auto;
+	height: auto;
+	max-width: 60%;
+    max-height: 70%;
+    position: relative;
+    float: right;
+    clear: right;
+    margin-right: -100px;
+    margin-left: 50px;
+
+}
+.right-words{
+    width: auto;
+	height: auto;
+	max-width: 50%;
+    max-height: 70%;
+    position: relative;
+    float: right;
+    clear: left;
+    clear: right;
+
+}
+.left-info{
+    max-width: 50%;
+    max-height: 70%;
+    
+}
+#churchIndoor2{
+    width: auto;
+	height: auto;
+	max-width: 56%;
+    max-height: 70%;
+    position: relative;
+    float: left;
+    clear: left;
+    clear: right;
+    margin-right: -100px;
+    margin-left: -150px;
+}
+
+.left-info{
+    margin-left: -100px;
+}

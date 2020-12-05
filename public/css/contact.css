@@ -18,6 +18,7 @@ body {
 	margin: auto;
 	display: flex;
 	flex-wrap: wrap;
+	margin-top: 90px;
 }
 
 .contact-in {

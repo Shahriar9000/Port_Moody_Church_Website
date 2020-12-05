@@ -1,0 +1,45 @@
+<!DOCTYPE html> 
+<html> 
+    <head>
+        <%- include('./partials/head'); %>
+        <meta http-equiv="Content-Type"content="text/html; charset=utf-8"/>
+		<meta name="viewport"content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="stylesheet" href="calendar.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+		<!-- <script src="/create_event/create_event.js" charset="UTF-8"></script> -->
+
+	</head>
+
+    <body>
+		<%- include('./partials/navbar', {active: "create_event"}); %>
+		<div class="card p-3" style="background-color: rgba(255, 255, 255, 0.7); width: 90vh; margin:auto">
+			<% if(userId != "-1" && role == "admin"){ %>
+
+			<form action = "/create_event/add_event" method = "POST">
+				
+				<div class="form-group">
+					<label for="date"><strong>Date</strong></label>
+					<input class="form-control" type="date" id="date" name="date" required></input>
+				</div>
+				<div class="form-group">
+					<label for="time"><strong>Time</strong></label>
+					<input class="form-control" type="time" id="time" name="time" required></input>
+				</div>
+				<div class="form-group">
+					<label for="event_type"><strong>Event Type</strong></label>
+					<input class="form-control" type="text" id="event_type" name="event_type" required></input>
+				</div>
+
+				<button class="btn btn-secondary mb-2 float-sm-right" style="width: 100px" type="submit">Add Event</button>
+			</form>
+			<% } else{ %>
+				<div class="contact-wrap">
+					<h6>This page is restricted to admins only</h6>
+				</div>
+
+			<% } %>
+
+		</div>
+		
+	</body>
+</html>
