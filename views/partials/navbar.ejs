@@ -25,10 +25,10 @@
                 </li>
 
                 <li class="nav-item <%if(active=='zoom'){%>active<%}%>" >
-                    <a class="nav-link" href=zoom><strong>Zoom Meeting</strong></a>
+                    <a class="nav-link" href="/zoom"><strong>Zoom Meetings</strong></a>
                 </li>
                 
-                <li class="nav-item dropdown" >
+                <li class="nav-item dropdown <%if(active=='create_event' || active=='display_event'){%>active<%}%>" >
                     <a class="nav-link dropdown-toggle" href='#' id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <strong>Events</strong>
                     </a>

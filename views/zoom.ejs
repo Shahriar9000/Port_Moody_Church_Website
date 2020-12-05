@@ -2,13 +2,115 @@
 <html> 
     <head>
         <%- include('./partials/head'); %>
+        <link rel="stylesheet" href="/zoom/zoom.css" type="text/css">
+        <script src="/zoom/zoom.js" charset="UTF-8"></script>
+        <script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
     </head>
 
     <body>
         
         <%- include('./partials/navbar', {active: "zoom"}); %>
 
-        Hello World!
+        <div class="meeting_box" id="meeting_box">
+            <div id="top_row"> 
+                <h4 id="row"> Meetings </h4>
+                <% if(userId != "-1" && role == "admin"){ %>
+                        <button type="submit" class="btn btn-primary" id="row" name="add_btn" onclick="showPopup()">ADD</button>
+                <% } %> 
+    
+            </div>
+            
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Host</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Minutes</th>
+                    <th scope="col">Zoom Link</th>
+                    <th scope="col">Notify</th>
+                    <% if(userId != "-1" && role == "admin"){ %>
+                        <th scope="col">  Remove   </th>
+                    <% } %> 
+                  </tr>
+                </thead>
+                <tbody id="meeting_content">
+                    <% if(rows.length > 0){ %>
+                        <% rows.sort((a,b)=>a.date-b.date); %>
+                        <% rows.forEach(met => { %>
+                            <tr>
+                                <td> <%= met.title %> </td>
+                                <td> <%= met.host %> </td>
+                                <td> <%= met.description %> </td>
+                                <td> <%= met.date.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }); %> </td>
+                                <td> <%= met.duration %> </td>
+                                <td> <a href="<%= met.link %>"> Join Meeting </a></td>
+                                <td> 
+                                    <div title="Add to Calendar" class="addeventatc" id="calendar" style="z-index: 0;">
+                                        Add to Calendar
+                                        <span class="start"><%= met.date.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }); %></span>
+                                        <span class="title"><%= met.title %></span>
+                                        <span class="description"><%= met.description %></span>
+                                        <span class="location"><%= met.link %></span>
+                                    </div>    
+                                </td>
+                                <% if(userId != "-1" && role == "admin"){ %>
+                                    <td> 
+                                        <form action="/zoom/delete" method="post">
+                                            <input type="hidden" name="meeting_id" value="<%= met.meeting_id%>">
+                                            <button type="submit" class="btn btn-danger" name="delete_btn">Delete</button>
+                                        </form>
+                                    </td>
+                                <% } %> 
+                            </tr>
+                        <% }) %>
+                    <% } else { %>
+                        <p>There are currently no meetings...</p>
+                    <% } %> 
+                </tbody>
+              </table>
+
+
+            <div class="card form-popup" id="meeting_edit">
+                <form id="create_meeting_form" action="/zoom/add" method="POST">
+                    <h1>Plan Your Meeting with Zoom</h1>
+                    <div class="form-group">
+                        <label for="meeting_host"><b>Host's Name</b></label>
+                        <input class="form-control" type="text" id="meeting_host" name="meeting_host" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="meeting_title"><b>Title</b></label>
+                        <input class="form-control" type="text" id="meeting_title" name="meeting_title" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="meeting_date"><b>Date</b></label>
+                        <input class="form-control" type="datetime-local" id="meeting_date" name="meeting_date" required/>
+                    </div>
+                    <div class="form-group">
+                        <label for="meeting_duration"><b>Duration (minutes)</b></label>
+                        <input class="form-control" type="number" id="meeting_duration" name="meeting_duration" required min="15" step="5"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="meeting_description"><b>Description</b></label>
+                        <input class="form-control" type="text" id="meeting_description" name="meeting_description" required />
+                    </div>
+                    <button id="close_meeting_btn" type="button" class="btn btn-secondary float-right m-2" onclick="closePopup()">Close</button>
+                    <button id="create_meeting_btn" type="submit" class="btn btn-secondary float-right m-2">Create</button>
+                </form>
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+
+
+
 
     </body>
 
