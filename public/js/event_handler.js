@@ -1,3 +1,6 @@
+
+const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const months = ['Jan','Feb','March','April','May','June','July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 show_all_events()
 
 function show_all_events() {
@@ -17,7 +20,8 @@ function show_all_events() {
 
 function display_events(all_events) {
     var table = document.getElementById("event_table");
-    var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+
     
 
     for (var i in all_events) {
@@ -29,7 +33,8 @@ function display_events(all_events) {
         console.log(type_);
 
         var date = new Date(date_);
-        var finalDate = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+
+        var finalDate = date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear();
 
         var day_of_week = days[date.getDay()];
 
@@ -62,3 +67,24 @@ function tConvert (time) {
     }
     return time.join (' '); // return adjusted time or original string
   }
+
+
+function SortByWeek()
+{   
+    var t = document.getElementById("event_table");
+ 
+		for(var i = 0; i < t.rows.length-1; i++)
+		{
+			for(var j = 1; j < t.rows.length-i-1; j++)
+			{   
+                var a = days.indexOf(t.rows[j].cells[1].innerHTML);
+                var b = days.indexOf(t.rows[j+1].cells[1].innerHTML);
+				if( a > b)
+				{	
+					var temp = t.rows[j].innerHTML;
+					t.rows[j].innerHTML = t.rows[j+1].innerHTML;
+					t.rows[j+1].innerHTML = temp;
+				}
+			}
+		}
+}
