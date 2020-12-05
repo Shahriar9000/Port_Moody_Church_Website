@@ -10,7 +10,6 @@ const noteRouter = require('./route/notes');
 const sermonsRouter =require('./route/sermons');
 const adminRouter =require('./route/admin')
 const zoomRouter = require('./route/zoom')
-const adminRouter =require('./route/admin');
 const eventRouter =require('./route/events');
 
 var userId = -1;
