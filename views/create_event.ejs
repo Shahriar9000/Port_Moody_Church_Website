@@ -20,7 +20,7 @@
 				
 				<div class="form-group">
 					<label for="date"><strong>Date</strong></label>
-					<input class="form-control" type="date" id="date" name="date" required></input>
+					<input class="form-control" type="date" id="date" name="date" min='2020-12-05' required></input>
 				</div>
 				<div class="form-group">
 					<label for="time"><strong>Time</strong></label>
@@ -40,7 +40,19 @@
 
 			<% } %>
 
-		</div>
+			<script type="text/javascript">
+			$(document).ready(function() 
+			{	
+				var date = new Date();
+
+				var min_date = date.getFullYear() + "-" + [date.getMonth()+1] + "-" + date.getDate();
+
+				document.getElementById("date").setAttribute("min", min_date);
+			});
+		
+		
+			</script>
+
 		
 	</body>
 	<%- include('./partials/footer'); %>
