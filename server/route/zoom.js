@@ -75,7 +75,7 @@ router.post('/add', function (req, res) {
     const description = req.body.meeting_description
     //const zoom_id = "fdYHTt0OTbujpDESOmOa9g";
     console.log(zoom_Id);
-    
+    console.log(date);
 
     var options = {
         method: 'POST',
@@ -95,7 +95,7 @@ router.post('/add', function (req, res) {
             type: 2,
             agenda: description,
             duration: duration,
-            start_time: date + ":00" +"Z"
+            start_time: date + ":00" +"PT"
           },
         json: true //Parse the JSON string in the response
     };
